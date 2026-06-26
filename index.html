@@ -8,21 +8,14 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>CraftyEngineer's Card Tracker</title>
+<title>CraftyEngineer Card Tracker</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--p:#4B0082;--pl:#f3e8ff;--pm:#9d6bbf;--pb:#7b2fbe;--pd:#2d0050;}
 html,body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
 html{overflow-y:scroll;}
-body{
-  background-color:#faf8ff;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Ccircle cx='45' cy='60' r='28' fill='rgba(255,107,157,0.18)'/%3E%3Ccircle cx='190' cy='35' r='36' fill='rgba(255,179,71,0.15)'/%3E%3Ccircle cx='360' cy='80' r='22' fill='rgba(79,195,247,0.18)'/%3E%3Ccircle cx='80' cy='180' r='32' fill='rgba(129,199,132,0.16)'/%3E%3Ccircle cx='280' cy='150' r='40' fill='rgba(75,0,130,0.10)'/%3E%3Ccircle cx='420' cy='210' r='24' fill='rgba(255,107,157,0.14)'/%3E%3Ccircle cx='30' cy='300' r='34' fill='rgba(255,179,71,0.16)'/%3E%3Ccircle cx='160' cy='270' r='20' fill='rgba(129,199,132,0.18)'/%3E%3Ccircle cx='340' cy='320' r='38' fill='rgba(79,195,247,0.14)'/%3E%3Ccircle cx='70' cy='400' r='28' fill='rgba(75,0,130,0.12)'/%3E%3Ccircle cx='230' cy='380' r='24' fill='rgba(255,107,157,0.15)'/%3E%3Ccircle cx='400' cy='410' r='32' fill='rgba(255,179,71,0.14)'/%3E%3Ccircle cx='130' cy='100' r='18' fill='rgba(79,195,247,0.20)'/%3E%3Ccircle cx='310' cy='240' r='26' fill='rgba(255,107,157,0.13)'/%3E%3Ccircle cx='460' cy='140' r='20' fill='rgba(129,199,132,0.17)'/%3E%3C/svg%3E");
-  background-repeat:repeat;background-size:500px 500px;
-  padding-bottom:2rem;
-}
+body{background-color:#faf8ff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Ccircle cx='45' cy='60' r='28' fill='rgba(255,107,157,0.18)'/%3E%3Ccircle cx='190' cy='35' r='36' fill='rgba(255,179,71,0.15)'/%3E%3Ccircle cx='360' cy='80' r='22' fill='rgba(79,195,247,0.18)'/%3E%3Ccircle cx='80' cy='180' r='32' fill='rgba(129,199,132,0.16)'/%3E%3Ccircle cx='280' cy='150' r='40' fill='rgba(75,0,130,0.10)'/%3E%3Ccircle cx='420' cy='210' r='24' fill='rgba(255,107,157,0.14)'/%3E%3Ccircle cx='30' cy='300' r='34' fill='rgba(255,179,71,0.16)'/%3E%3Ccircle cx='160' cy='270' r='20' fill='rgba(129,199,132,0.18)'/%3E%3Ccircle cx='340' cy='320' r='38' fill='rgba(79,195,247,0.14)'/%3E%3Ccircle cx='70' cy='400' r='28' fill='rgba(75,0,130,0.12)'/%3E%3Ccircle cx='230' cy='380' r='24' fill='rgba(255,107,157,0.15)'/%3E%3Ccircle cx='400' cy='410' r='32' fill='rgba(255,179,71,0.14)'/%3E%3Ccircle cx='130' cy='100' r='18' fill='rgba(79,195,247,0.20)'/%3E%3Ccircle cx='310' cy='240' r='26' fill='rgba(255,107,157,0.13)'/%3E%3Ccircle cx='460' cy='140' r='20' fill='rgba(129,199,132,0.17)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:500px 500px;padding-bottom:2rem;}
 #wrap{max-width:480px;margin:0 auto;padding:0.5rem;}
-
-/* LOGIN GATE */
 #login-screen{display:flex;align-items:center;justify-content:center;min-height:80vh;}
 .login-card{background:rgba(255,255,255,0.97);border:2px solid #e0d0f0;border-radius:20px;padding:2rem 1.5rem;text-align:center;max-width:360px;width:100%;}
 .login-dots{display:flex;justify-content:center;gap:7px;margin-bottom:14px;}
@@ -35,8 +28,6 @@ body{
 .login-btn:active{background:#3a0066;}
 .login-btn svg{width:20px;height:20px;flex-shrink:0;}
 .login-note{font-size:11px;color:#aaa;margin-top:12px;line-height:1.5;}
-
-/* HEADER */
 #app{display:none;}
 .header{background:#4B0082;border-radius:16px;padding:0.6rem 0.875rem;margin-bottom:0.5rem;}
 .header-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
@@ -44,8 +35,6 @@ body{
 .header-sub{font-size:11px;color:rgba(255,255,255,0.65);margin-top:2px;}
 .header-user{font-size:11px;color:rgba(255,255,255,0.8);text-align:right;flex-shrink:0;}
 .signout-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:8px;padding:4px 10px;font-size:10px;color:white;cursor:pointer;margin-top:3px;display:block;}
-
-/* DRIVE BAR */
 .drive-bar{display:flex;align-items:center;gap:8px;padding:5px 10px;border-radius:12px;margin-bottom:0.5rem;font-size:11px;}
 .drive-bar.connected{background:rgba(232,245,233,0.95);border:1.5px solid #4CAF50;color:#2e7d32;}
 .drive-bar.disconnected{background:rgba(255,255,255,0.92);border:1.5px solid #e0d0f0;color:#666;}
@@ -53,30 +42,24 @@ body{
 .drive-btn.connect{background:#4B0082;color:white;}
 .drive-btn.disconnect{background:#f3e8ff;color:#4B0082;border:1px solid #e0d0f0;}
 .drive-sync-indicator{font-size:10px;color:#9d6bbf;margin-left:4px;}
-
-/* TABS */
 .tabs{display:flex;gap:4px;margin-bottom:0.5rem;}
 .tab{flex:1;padding:8px 4px;border-radius:10px;border:1.5px solid #e0d0f0;background:rgba(255,255,255,0.88);font-size:11px;cursor:pointer;color:#9d6bbf;text-align:center;font-weight:500;-webkit-tap-highlight-color:transparent;}
 .tab.active{background:#4B0082;color:white;border-color:#4B0082;}
-
-/* SECTION CARDS */
-.section-card{background:rgba(255,255,255,0.92);border:1.5px solid #e0d0f0;border-radius:14px;overflow:hidden;margin-bottom:0.75rem;}
-
-/* EVENT CARDS */
 .event-card{border-radius:14px;margin-bottom:6px;background:rgba(243,232,255,0.93);border:2px solid #4B0082;overflow:hidden;}
 .event-card.sent{background:rgba(232,245,233,0.95);border-color:#4CAF50;}
-.event-card.manual-event{border-color:#FF6B9D;background:rgba(255,240,245,0.95);}
-.event-card.manual-event.sent{background:rgba(232,245,233,0.95);border-color:#4CAF50;}
+.event-card.app-bday{border-color:#FF6B9D;background:rgba(255,240,245,0.95);}
+.event-card.app-bday.sent{background:rgba(232,245,233,0.95);border-color:#4CAF50;}
+.event-card.manual-ev{border-color:#FF6B9D;background:rgba(255,240,245,0.95);}
+.event-card.manual-ev.sent{background:rgba(232,245,233,0.95);border-color:#4CAF50;}
 .event-top{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;}
 .event-icon{font-size:18px;flex-shrink:0;line-height:1.2;}
 .event-info{flex:1;min-width:0;}
 .event-name{font-size:14px;font-weight:600;color:#2d0050;line-height:1.3;}
 .event-date{font-size:11px;color:#7b2fbe;margin-top:2px;}
+.event-age{font-size:11px;color:#9d6bbf;margin-top:1px;}
 .event-sent-badge{font-size:10px;color:#2e7d32;background:#e8f5e9;border-radius:20px;padding:2px 8px;border:1px solid #a5d6a7;display:inline-flex;align-items:center;gap:4px;margin-top:3px;}
 .event-arrow{font-size:11px;color:#9d6bbf;transition:transform 0.2s;flex-shrink:0;align-self:center;}
 .event-arrow.open{transform:rotate(90deg);}
-
-/* TRACKING PANEL */
 .tracking-panel{padding:10px 12px 14px;border-top:1.5px solid #dcc6f0;background:rgba(255,255,255,0.6);}
 .tracking-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
 .chk-box{width:24px;height:24px;border-radius:6px;border:2px solid #d0b8e8;background:white;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;color:transparent;transition:all 0.15s;-webkit-tap-highlight-color:transparent;}
@@ -88,8 +71,6 @@ body{
 .notes-ta{width:100%;font-size:12px;background:white;border:1.5px solid #dcc6f0;border-radius:10px;padding:8px 9px;resize:none;font-family:inherit;line-height:1.5;min-height:56px;color:#2d0050;}
 .notes-ta:focus{outline:none;border-color:#4B0082;}
 .notes-ta::placeholder{color:#c4a8df;}
-
-/* HISTORY */
 .history-section{margin-top:10px;border-top:1px solid #f0e8f8;padding-top:10px;}
 .history-lbl{font-size:10px;font-weight:600;color:#9d6bbf;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;}
 .history-row{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid #f9f4ff;font-size:11px;color:#555;}
@@ -98,8 +79,6 @@ body{
 .history-sent{color:#2e7d32;}
 .history-not{color:#bbb;font-style:italic;}
 .history-note{color:#888;margin-top:2px;line-height:1.4;}
-
-/* LINK DIALOG */
 .dialog-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:100;display:flex;align-items:center;justify-content:center;padding:1rem;}
 .dialog-box{background:white;border-radius:16px;padding:1.25rem;max-width:400px;width:100%;box-shadow:0 8px 32px rgba(75,0,130,0.2);}
 .dialog-title{font-size:15px;font-weight:600;color:#4B0082;margin-bottom:6px;}
@@ -108,11 +87,8 @@ body{
 .dialog-person-row{padding:10px 12px;cursor:pointer;font-size:13px;color:#333;border-bottom:1px solid #f5f0fa;-webkit-tap-highlight-color:transparent;}
 .dialog-person-row:last-child{border-bottom:none;}
 .dialog-person-row:active{background:#f3e8ff;}
-.dialog-person-row.selected{background:#f3e8ff;color:#4B0082;font-weight:500;}
 .dialog-new-btn{width:100%;padding:10px;border-radius:10px;background:#f3e8ff;border:1.5px solid #dcc6f0;color:#4B0082;font-size:13px;font-weight:500;cursor:pointer;margin-bottom:8px;}
 .dialog-cancel-btn{width:100%;padding:10px;border-radius:10px;background:white;border:1.5px solid #e0d0f0;color:#666;font-size:13px;cursor:pointer;}
-
-/* ADD EVENT FORM */
 .add-form{background:rgba(255,255,255,0.95);border:1.5px solid #e0d0f0;border-radius:14px;padding:14px;margin-bottom:0.75rem;}
 .add-form-title{font-size:13px;font-weight:600;color:#4B0082;margin-bottom:12px;}
 .form-field{margin-bottom:10px;}
@@ -124,44 +100,47 @@ body{
 .add-btn{width:100%;padding:11px;border-radius:10px;background:#4B0082;border:none;color:white;font-size:13px;font-weight:600;cursor:pointer;}
 .add-btn:active{background:#3a0066;}
 .cancel-add-btn{width:100%;padding:10px;border-radius:10px;background:white;border:1.5px solid #e0d0f0;color:#666;font-size:13px;cursor:pointer;margin-top:6px;}
-
-/* EMPTY STATE */
+.add-btns-row{display:flex;gap:6px;margin-bottom:0.75rem;}
+.add-toggle-btn{flex:1;padding:10px 6px;border-radius:12px;border:1.5px dashed #dcc6f0;background:rgba(243,232,255,0.5);color:#4B0082;font-size:12px;font-weight:500;cursor:pointer;-webkit-tap-highlight-color:transparent;text-align:center;}
+.add-toggle-btn:active{background:rgba(243,232,255,0.9);}
 .empty-state{text-align:center;padding:2.5rem 1rem;color:#9d6bbf;font-size:13px;line-height:1.7;}
 .empty-icon{font-size:36px;display:block;margin-bottom:8px;}
-
-/* WINDOW SELECTOR */
+.loading-state{text-align:center;padding:2rem 1rem;color:#9d6bbf;font-size:13px;}
 .window-bar{display:flex;gap:4px;margin-bottom:0.5rem;}
 .window-btn{flex:1;padding:7px 4px;border-radius:8px;border:1.5px solid #e0d0f0;background:rgba(255,255,255,0.88);font-size:10px;cursor:pointer;color:#9d6bbf;text-align:center;font-weight:500;-webkit-tap-highlight-color:transparent;}
 .window-btn.active{background:#7b2fbe;color:white;border-color:#7b2fbe;}
-
-/* SUMMARY CHIPS */
 .summary-bar{display:flex;gap:4px;margin-bottom:0.5rem;}
 .chip{flex:1;text-align:center;padding:6px 4px;border-radius:12px;font-size:10px;font-weight:500;background:rgba(243,232,255,0.93);color:#4B0082;}
 .chip span{display:block;font-size:17px;font-weight:600;margin-bottom:1px;}
-
-/* MONTH GROUP HEADER */
 .month-group-hdr{font-size:11px;font-weight:600;color:#9d6bbf;text-transform:uppercase;letter-spacing:0.05em;padding:4px 2px 5px;margin-top:4px;}
-
-/* ADD EVENT TOGGLE */
-.add-toggle-btn{width:100%;padding:10px;border-radius:12px;border:1.5px dashed #dcc6f0;background:rgba(243,232,255,0.5);color:#4B0082;font-size:13px;font-weight:500;cursor:pointer;margin-bottom:0.75rem;-webkit-tap-highlight-color:transparent;}
-.add-toggle-btn:active{background:rgba(243,232,255,0.9);}
-
-/* LOADING */
-.loading-state{text-align:center;padding:2rem 1rem;color:#9d6bbf;font-size:13px;}
-
-/* FOOTER */
-.app-footer{text-align:center;padding:14px 0 4px;font-size:11px;color:#9d6bbf;}
-.app-footer a{color:#4B0082;text-decoration:none;font-weight:500;}
-
-/* SAFARI WARNING */
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;padding:4px 0;}
+.cal-nav-btn{background:#f3e8ff;border:1.5px solid #dcc6f0;border-radius:10px;padding:6px 14px;font-size:16px;cursor:pointer;color:#4B0082;-webkit-tap-highlight-color:transparent;}
+.cal-nav-btn:active{background:#e0d0f0;}
+.cal-month-lbl{font-size:15px;font-weight:700;color:#4B0082;}
+.cal-grid{background:rgba(255,255,255,0.92);border:1.5px solid #e0d0f0;border-radius:14px;overflow:hidden;margin-bottom:8px;}
+.cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);background:#f3e8ff;}
+.cal-dow{font-size:10px;font-weight:600;color:#9d6bbf;text-align:center;padding:6px 2px;}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);}
+.cal-day{min-height:48px;padding:4px 2px 3px;border-top:1px solid #f0e8f8;position:relative;cursor:default;text-align:center;}
+.cal-day.has-event{cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.cal-day.has-event:active{background:#faf0ff;}
+.cal-day.today .cal-day-num{background:#4B0082;color:white;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;}
+.cal-day.selected{background:#faf0ff;}
+.cal-day-num{font-size:12px;color:#444;line-height:1.8;display:inline-block;}
+.cal-day.other-month .cal-day-num{color:#ddd;}
+.cal-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;margin-top:2px;}
+.cal-dot{width:6px;height:6px;border-radius:50%;background:#4B0082;flex-shrink:0;}
+.cal-dot.sent{background:#4CAF50;}
+.cal-dot.pink{background:#FF6B9D;}
+.cal-popup{background:rgba(243,232,255,0.98);border:1.5px solid #dcc6f0;border-radius:14px;margin-bottom:8px;overflow:hidden;}
+.cal-popup-hdr{padding:8px 12px;background:#4B0082;color:white;font-size:12px;font-weight:600;}
 .safari-warning{background:#FEF3C7;border:1.5px solid #D97706;border-radius:12px;padding:9px 14px;margin-bottom:0.5rem;font-size:12px;color:#78350F;line-height:1.5;display:flex;align-items:flex-start;gap:8px;}
+.app-footer{text-align:center;padding:14px 0 4px;font-size:11px;color:#9d6bbf;}
 </style>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 <div id="wrap">
-
-<!-- LOGIN GATE -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-dots">
@@ -173,9 +152,7 @@ body{
     </div>
     <div class="login-title">CraftyEngineer's<br><span>Card Tracker</span></div>
     <div class="login-sub">by <a href="https://instagram.com/craftyengineer" target="_blank" style="color:#4B0082;font-weight:600;text-decoration:none;">@craftyengineer</a></div>
-    <div class="login-desc">
-      Track who you've sent cards to — birthdays from Google Calendar, plus one-off events like graduations, new babies, and more. Your data stays private and syncs to your Google Drive.
-    </div>
+    <div class="login-desc">Track who you have sent cards to. Birthdays from Google Calendar, plus ones you add directly, and one-off events like graduations and new babies. Private and synced to your Google Drive.</div>
     <button class="login-btn" onclick="signIn()">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -185,16 +162,14 @@ body{
       </svg>
       Sign in with Google
     </button>
-    <div class="login-note">Sign in to access your card tracker. No birthdays or data are visible without logging in.</div>
+    <div class="login-note">Sign in to access your card tracker. No birthdays or data visible without logging in.</div>
   </div>
 </div>
-
-<!-- MAIN APP -->
 <div id="app">
   <div class="header">
     <div class="header-row">
       <div style="flex:1;">
-        <div class="header-title">CraftyEngineer's Card Tracker 💌</div>
+        <div class="header-title">CraftyEngineer Card Tracker 💌</div>
         <div class="header-sub">@craftyengineer</div>
       </div>
       <div class="header-user">
@@ -203,932 +178,228 @@ body{
       </div>
     </div>
   </div>
-
-  <div id="safari-warn" style="display:none;" class="safari-warning">
-    <span>⚠️</span>
-    <span><strong>Safari may block Google Drive sync.</strong> Use Chrome or Firefox for reliable saving.</span>
-  </div>
-
+  <div id="safari-warn" style="display:none;" class="safari-warning"><span>⚠️</span><span><strong>Safari may block Google Drive sync.</strong> Use Chrome or Firefox for reliable saving.</span></div>
   <div id="drive-bar" class="drive-bar disconnected">
     <span style="font-size:16px;">☁️</span>
     <span id="drive-status" style="flex:1;">Connect Google Drive to save your tracking data</span>
     <button class="drive-btn connect" id="drive-btn" onclick="driveConnect()">Connect</button>
   </div>
-
   <div class="tabs">
     <div class="tab active" id="tab-upcoming" onclick="setTab('upcoming')">Upcoming</div>
-    <div class="tab" id="tab-month" onclick="setTab('month')">This Month</div>
-    <div class="tab" id="tab-year" onclick="setTab('year')">Full Year</div>
+    <div class="tab" id="tab-calendar" onclick="setTab('calendar')">Calendar</div>
+    <div class="tab" id="tab-month" onclick="setTab('month')">Month</div>
+    <div class="tab" id="tab-year" onclick="setTab('year')">Year</div>
   </div>
-
   <div id="summary-bar" class="summary-bar"></div>
   <div id="view"></div>
-
   <div style="text-align:center;padding:10px 0 4px;">
-    <a href="https://buymeacoffee.com/craftyengineer" target="_blank" rel="noopener"
-       style="display:inline-flex;align-items:center;gap:7px;background:#FFDD00;color:#000;font-weight:700;font-size:13px;padding:10px 22px;border-radius:22px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,0.13);">
-      ☕ Buy me a coffee
-    </a>
+    <a href="https://buymeacoffee.com/craftyengineer" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;background:#FFDD00;color:#000;font-weight:700;font-size:13px;padding:10px 22px;border-radius:22px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,0.13);">☕ Buy me a coffee</a>
     <div style="font-size:11px;color:#9d6bbf;margin-top:8px;font-weight:700;">Made with ♥ by @craftyengineer</div>
   </div>
-  <div class="app-footer">craftyengineer.com &nbsp;·&nbsp; @craftyengineer</div>
+  <div class="app-footer">craftyengineer.com · @craftyengineer</div>
 </div>
-
-</div><!-- end #wrap -->
-
-<!-- LINK DIALOG -->
+</div>
 <div id="link-dialog" class="dialog-overlay" style="display:none;" onclick="closeLinkDialog(event)">
   <div class="dialog-box" onclick="event.stopPropagation()">
     <div class="dialog-title">Who is this?</div>
-    <div class="dialog-sub" id="link-dialog-sub">This event is new. Link it to an existing person or create a new entry.</div>
+    <div class="dialog-sub" id="link-dialog-sub"></div>
     <div class="dialog-person-list" id="link-person-list"></div>
     <button class="dialog-new-btn" onclick="linkAsNew()">➕ Create as new person</button>
     <button class="dialog-cancel-btn" onclick="closeLinkDialog()">Cancel</button>
   </div>
 </div>
-
 <script>
-// ═══════════════════════════════════════════════════════════════
-// CONFIG
-// ═══════════════════════════════════════════════════════════════
-const DRIVE_CLIENT_ID = '707073899745-dq0v6glolvra3dmhti9umt25476t6kgr.apps.googleusercontent.com';
-const DRIVE_SCOPE = [
-  'https://www.googleapis.com/auth/drive.appdata',
-  'https://www.googleapis.com/auth/calendar.readonly',
-  'https://www.googleapis.com/auth/userinfo.email'
-].join(' ');
-const DRIVE_FILE_NAME = 'card-tracker-data.json';
-
-// ═══════════════════════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════════════════════
-let accessToken = null;
-let driveFileId = null;
-let driveSyncing = false;
-let _driveRefreshTimer = null;
-let userEmail = '';
-
-// Core data model
-// persons: { personId: { name, aliases: [calEventTitle,...] } }
-// tracking: { personId: { [year]: { sent: bool, dateSent: 'YYYY-MM-DD'|'', notes: '' } } }
-// calEvents: array of { id, title, date (YYYY-MM-DD), type:'birthday'|'manual', personId|null, calendarId }
-// manualEvents: array of { id, title, date, type, personId }
-let persons = {};
-let tracking = {};
-let manualEvents = [];
-
-// Runtime (not persisted)
-let calendarEvents = []; // fetched from Google Calendar each load
-let calLoading = false;
-let calLoaded = false;
-
-let activeTab = 'upcoming';
-let upcomingDays = 30;
-let expandedEvents = {};
-let showAddForm = false;
-let addFormData = { name: '', date: '', type: 'Birthday' };
-
-// Link dialog state
-let pendingLinkEvent = null; // { title, date, calendarId, type }
-
-// ═══════════════════════════════════════════════════════════════
-// AUTH
-// ═══════════════════════════════════════════════════════════════
-const HAS_STORAGE = (() => { try { localStorage.setItem('_t','1'); localStorage.removeItem('_t'); return true; } catch(e) { return false; } })();
-
-function signIn() {
-  if (typeof google === 'undefined') {
-    alert('Google Sign-In is still loading. Please try again in a moment.');
-    return;
-  }
-  const client = google.accounts.oauth2.initTokenClient({
-    client_id: DRIVE_CLIENT_ID,
-    scope: DRIVE_SCOPE,
-    callback: async (response) => {
-      if (response.error) { console.log('Auth error:', response.error); return; }
-      accessToken = response.access_token;
-      const expiry = Date.now() + (response.expires_in * 1000);
-      if (HAS_STORAGE) {
-        localStorage.setItem('ct_token', accessToken);
-        localStorage.setItem('ct_token_expiry', String(expiry));
-      }
-      scheduleDriveRefresh(expiry);
-      // Get user email
-      try {
-        const r = await fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
-          headers: { Authorization: `Bearer ${accessToken}` }
+const DRIVE_CLIENT_ID='707073899745-dq0v6glolvra3dmhti9umt25476t6kgr.apps.googleusercontent.com';
+const DRIVE_SCOPE='https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/userinfo.email';
+const DRIVE_FILE_NAME='card-tracker-data.json';
+let accessToken=null,driveFileId=null,driveSyncing=false,_driveRefreshTimer=null,userEmail='';
+let persons={},tracking={},appBirthdays=[],manualEvents=[];
+let calendarEvents=[],calLoading=false,calLoaded=false;
+let activeTab='upcoming',upcomingDays=30,expandedEvents={};
+let showAddBirthdayForm=false,showAddEventForm=false;
+let addBdayData={name:'',month:'',day:'',birthYear:''};
+let addEventData={name:'',date:'',type:'Birthday'};
+let calViewYear=new Date().getFullYear(),calViewMonth=new Date().getMonth(),calSelectedDay=null;
+let pendingLinkEvent=null;
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MONTHS_SHORT=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DAYS_FULL=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const DAYS_SHORT=['Su','Mo','Tu','We','Th','Fr','Sa'];
+function todayStr(){const d=new Date();return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate());}
+function p2(n){return String(n).padStart(2,'0');}
+function genId(){return Math.random().toString(36).substr(2,9)+Date.now().toString(36);}
+function fmtDate(s){if(!s)return'';const[y,m,d]=s.split('-').map(Number);const dt=new Date(y,m-1,d);return DAYS_FULL[dt.getDay()]+', '+MONTHS[m-1]+' '+d;}
+function fmtShort(s){if(!s)return'';const[y,m,d]=s.split('-').map(Number);return MONTHS_SHORT[m-1]+' '+d;}
+function fmtMD(mo,d){return MONTHS[mo-1]+' '+d;}
+function daysUntil(mo,d){const n=new Date(),ty=n.getFullYear();let nx=new Date(ty,mo-1,d);if(nx<n)nx=new Date(ty+1,mo-1,d);return Math.round((nx-n)/86400000);}
+function upcomingOcc(mo,d,from){const ty=from.getFullYear();let dt=new Date(ty,mo-1,d);if(dt<from)dt=new Date(ty+1,mo-1,d);return dt;}
+function upcomingYr(mo,d,from){return upcomingOcc(mo,d,from).getFullYear();}
+function getIcon(type){const t=(type||'').toLowerCase();if(t.includes('birthday'))return'🎂';if(t.includes('graduation'))return'🎓';if(t.includes('baby'))return'👶';if(t.includes('wedding')||t.includes('anniversary'))return'💍';if(t.includes('sympathy'))return'🌸';return'💌';}
+const HAS_STORE=(()=>{try{localStorage.setItem('_t','1');localStorage.removeItem('_t');return true;}catch(e){return false;}})();
+function signIn(){
+  if(typeof google==='undefined'){alert('Google Sign-In is still loading. Please try again.');return;}
+  google.accounts.oauth2.initTokenClient({client_id:DRIVE_CLIENT_ID,scope:DRIVE_SCOPE,callback:async r=>{
+    if(r.error)return;
+    accessToken=r.access_token;
+    const exp=Date.now()+(r.expires_in*1000);
+    if(HAS_STORE){localStorage.setItem('ct_token',accessToken);localStorage.setItem('ct_token_expiry',String(exp));}
+    schedRefresh(exp);
+    try{const ri=await fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json',{headers:{Authorization:'Bearer '+accessToken}});const inf=await ri.json();userEmail=inf.email||'';if(HAS_STORE&&userEmail)localStorage.setItem('ct_email',userEmail);}catch(e){}
+    showApp();await driveLoad();await loadCal();
+  }}).requestAccessToken();
+}
+function signOut(){accessToken=null;driveFileId=null;userEmail='';if(_driveRefreshTimer){clearTimeout(_driveRefreshTimer);_driveRefreshTimer=null;}if(HAS_STORE){['ct_token','ct_token_expiry','ct_drive_file','ct_email'].forEach(k=>localStorage.removeItem(k));}document.getElementById('login-screen').style.display='flex';document.getElementById('app').style.display='none';calendarEvents=[];calLoaded=false;calLoading=false;}
+function showApp(){document.getElementById('login-screen').style.display='none';document.getElementById('app').style.display='block';document.getElementById('user-email').textContent=userEmail;updDriveBar();render();}
+function checkSaved(){if(!HAS_STORE)return;const t=localStorage.getItem('ct_token');if(!t)return;const exp=parseInt(localStorage.getItem('ct_token_expiry')||'0');if(Date.now()<exp){accessToken=t;userEmail=localStorage.getItem('ct_email')||'';driveFileId=localStorage.getItem('ct_drive_file')||null;schedRefresh(exp);showApp();driveLoad().then(()=>loadCal());}}
+function updDriveBar(){const bar=document.getElementById('drive-bar'),st=document.getElementById('drive-status'),btn=document.getElementById('drive-btn');if(!bar)return;if(accessToken){bar.className='drive-bar connected';st.innerHTML='&#x2713; Google Drive connected <span class="drive-sync-indicator" id="sync-indicator"></span>';btn.textContent='Disconnect';btn.className='drive-btn disconnect';btn.onclick=signOut;}else{bar.className='drive-bar disconnected';st.textContent='Connect Google Drive to save your tracking data';btn.textContent='Connect';btn.className='drive-btn connect';btn.onclick=driveConnect;}}
+function driveConnect(){signIn();}
+function setSI(t){const el=document.getElementById('sync-indicator');if(el)el.textContent=t;}
+async function driveSave(){
+  if(!accessToken||driveSyncing)return;driveSyncing=true;setSI('· saving...');
+  try{
+    const data=JSON.stringify({persons,tracking,appBirthdays,manualEvents,savedAt:new Date().toISOString()});
+    if(!driveFileId)driveFileId=localStorage.getItem('ct_drive_file')||null;
+    if(!driveFileId){const sr=await fetch("https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name='"+DRIVE_FILE_NAME+"'&fields=files(id)",{headers:{Authorization:'Bearer '+accessToken}});if(sr.status===401){driveSyncing=false;return;}const sd=await sr.json();if(sd.files&&sd.files.length>0)driveFileId=sd.files[0].id;}
+    if(driveFileId){await fetch('https://www.googleapis.com/upload/drive/v3/files/'+driveFileId+'?uploadType=media',{method:'PATCH',headers:{Authorization:'Bearer '+accessToken,'Content-Type':'application/json'},body:data});}
+    else{const cr=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',{method:'POST',headers:{Authorization:'Bearer '+accessToken,'Content-Type':'multipart/related; boundary=boundary'},body:'--boundary\r\nContent-Type: application/json\r\n\r\n'+JSON.stringify({name:DRIVE_FILE_NAME,parents:['appDataFolder']})+'\r\n--boundary\r\nContent-Type: application/json\r\n\r\n'+data+'\r\n--boundary--'});const cd=await cr.json();driveFileId=cd.id;if(HAS_STORE)localStorage.setItem('ct_drive_file',driveFileId);}
+    setSI('· saved ✓');setTimeout(()=>setSI(''),2000);
+  }catch(e){setSI('· sync error');}driveSyncing=false;
+}
+async function driveLoad(){
+  if(!accessToken)return;setSI('· loading...');
+  try{
+    if(!driveFileId)driveFileId=localStorage.getItem('ct_drive_file')||null;
+    if(!driveFileId){const sr=await fetch("https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name='"+DRIVE_FILE_NAME+"'&fields=files(id)",{headers:{Authorization:'Bearer '+accessToken}});if(sr.status===401){setSI('');return;}const sd=await sr.json();if(!sd.files||sd.files.length===0){setSI('');await driveSave();return;}driveFileId=sd.files[0].id;if(HAS_STORE)localStorage.setItem('ct_drive_file',driveFileId);}
+    const fr=await fetch('https://www.googleapis.com/drive/v3/files/'+driveFileId+'?alt=media',{headers:{Authorization:'Bearer '+accessToken}});if(fr.status===401){setSI('');return;}
+    const d=await fr.json();
+    if(d.persons)persons=d.persons;if(d.tracking)tracking=d.tracking;if(d.appBirthdays)appBirthdays=d.appBirthdays;if(d.manualEvents)manualEvents=d.manualEvents;
+    setSI('· loaded ✓');setTimeout(()=>setSI(''),2000);render();
+  }catch(e){setSI('· load error');}
+}
+function schedRefresh(exp){if(_driveRefreshTimer)clearTimeout(_driveRefreshTimer);const ms=Math.max(0,exp-Date.now()-5*60*1000);_driveRefreshTimer=setTimeout(()=>{if(!accessToken||typeof google==='undefined')return;const hint=userEmail||(HAS_STORE?localStorage.getItem('ct_email')||'':'');google.accounts.oauth2.initTokenClient({client_id:DRIVE_CLIENT_ID,scope:DRIVE_SCOPE,hint,prompt:'',callback:r=>{if(r.error)return;accessToken=r.access_token;const ne=Date.now()+(r.expires_in*1000);if(HAS_STORE){localStorage.setItem('ct_token',accessToken);localStorage.setItem('ct_token_expiry',String(ne));}schedRefresh(ne);}}).requestAccessToken();},ms);}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState!=='visible'||accessToken)return;if(!HAS_STORE)return;const t=localStorage.getItem('ct_token');if(!t)return;const exp=parseInt(localStorage.getItem('ct_token_expiry')||'0');if(Date.now()<exp){accessToken=t;driveFileId=localStorage.getItem('ct_drive_file')||null;updDriveBar();schedRefresh(exp);}});
+async function loadCal(){
+  if(!accessToken||calLoading)return;calLoading=true;calLoaded=false;render();
+  try{
+    const cr=await fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList',{headers:{Authorization:'Bearer '+accessToken}});
+    if(cr.status===401){calLoading=false;return;}
+    const cals=(await cr.json()).items||[];
+    const now=new Date(),ys=new Date(now.getFullYear(),0,1).toISOString(),ye=new Date(now.getFullYear(),11,31,23,59,59).toISOString();
+    const evs=[];
+    await Promise.all(cals.map(async cal=>{
+      try{
+        const url=new URL('https://www.googleapis.com/calendar/v3/calendars/'+encodeURIComponent(cal.id)+'/events');
+        url.searchParams.set('timeMin',ys);url.searchParams.set('timeMax',ye);url.searchParams.set('singleEvents','true');url.searchParams.set('maxResults','500');url.searchParams.set('fields','items(id,summary,start)');
+        const er=await fetch(url.toString(),{headers:{Authorization:'Bearer '+accessToken}});
+        if(!er.ok)return;
+        const items=(await er.json()).items||[];
+        const isBdayCal=cal.id.includes('addressbook')||cal.id.includes('#contacts@group')||cal.id.includes('birthday')||(cal.summary||'').toLowerCase()==='birthdays'||(cal.summary||'').toLowerCase()==='birthday';
+        items.forEach(ev=>{
+          const title=(ev.summary||'').trim();if(!title)return;
+          const looksLike=title.toLowerCase().includes('birthday');
+          if(!isBdayCal&&!looksLike)return;
+          const dr=ev.start&&(ev.start.date||ev.start.dateTime);if(!dr)return;
+          evs.push({id:ev.id,title,date:dr.substring(0,10),calendarId:cal.id,calendarName:cal.summary,type:'birthday'});
         });
-        const info = await r.json();
-        userEmail = info.email || '';
-        if (HAS_STORAGE && userEmail) localStorage.setItem('ct_email', userEmail);
-      } catch(e) {}
-      showApp();
-      await driveLoad();
-      await loadCalendarEvents();
-    }
-  });
-  client.requestAccessToken();
-}
-
-function signOut() {
-  accessToken = null; driveFileId = null; userEmail = '';
-  if (_driveRefreshTimer) { clearTimeout(_driveRefreshTimer); _driveRefreshTimer = null; }
-  if (HAS_STORAGE) {
-    ['ct_token','ct_token_expiry','ct_drive_file','ct_email'].forEach(k => localStorage.removeItem(k));
-  }
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('app').style.display = 'none';
-  calendarEvents = []; calLoaded = false; calLoading = false;
-}
-
-function showApp() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-  document.getElementById('user-email').textContent = userEmail;
-  updateDriveBar();
-  render();
-}
-
-function checkSavedToken() {
-  if (!HAS_STORAGE) return;
-  const token = localStorage.getItem('ct_token');
-  if (!token) return;
-  const expiry = parseInt(localStorage.getItem('ct_token_expiry') || '0');
-  if (Date.now() < expiry) {
-    accessToken = token;
-    userEmail = localStorage.getItem('ct_email') || '';
-    driveFileId = localStorage.getItem('ct_drive_file') || null;
-    scheduleDriveRefresh(expiry);
-    showApp();
-    driveLoad().then(() => loadCalendarEvents());
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════
-// DRIVE SYNC
-// ═══════════════════════════════════════════════════════════════
-function updateDriveBar() {
-  const bar = document.getElementById('drive-bar');
-  const status = document.getElementById('drive-status');
-  const btn = document.getElementById('drive-btn');
-  if (!bar || !status || !btn) return;
-  if (accessToken) {
-    bar.className = 'drive-bar connected';
-    status.innerHTML = '✓ Google Drive connected <span class="drive-sync-indicator" id="sync-indicator"></span>';
-    btn.textContent = 'Disconnect';
-    btn.className = 'drive-btn disconnect';
-    btn.onclick = signOut;
-  } else {
-    bar.className = 'drive-bar disconnected';
-    status.textContent = 'Connect Google Drive to save your tracking data';
-    btn.textContent = 'Connect';
-    btn.className = 'drive-btn connect';
-    btn.onclick = driveConnect;
-  }
-}
-
-function driveConnect() { signIn(); }
-
-function setSyncIndicator(text) {
-  const el = document.getElementById('sync-indicator');
-  if (el) el.textContent = text;
-}
-
-async function driveSave() {
-  if (!accessToken || driveSyncing) return;
-  driveSyncing = true;
-  setSyncIndicator('· saving...');
-  try {
-    const data = JSON.stringify({ persons, tracking, manualEvents, savedAt: new Date().toISOString() });
-    if (!driveFileId) driveFileId = localStorage.getItem('ct_drive_file') || null;
-    if (!driveFileId) {
-      const sr = await fetch(
-        `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name='${DRIVE_FILE_NAME}'&fields=files(id)`,
-        { headers: { Authorization: `Bearer ${accessToken}` } }
-      );
-      if (sr.status === 401) { driveSyncing = false; return; }
-      const sd = await sr.json();
-      if (sd.files && sd.files.length > 0) driveFileId = sd.files[0].id;
-    }
-    if (driveFileId) {
-      await fetch(`https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=media`, {
-        method: 'PATCH',
-        headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
-        body: data
-      });
-    } else {
-      const cr = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id', {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'multipart/related; boundary=boundary' },
-        body: `--boundary\r\nContent-Type: application/json\r\n\r\n${JSON.stringify({ name: DRIVE_FILE_NAME, parents: ['appDataFolder'] })}\r\n--boundary\r\nContent-Type: application/json\r\n\r\n${data}\r\n--boundary--`
-      });
-      const cd = await cr.json();
-      driveFileId = cd.id;
-      if (HAS_STORAGE) localStorage.setItem('ct_drive_file', driveFileId);
-    }
-    setSyncIndicator('· saved ✓');
-    setTimeout(() => setSyncIndicator(''), 2000);
-  } catch(e) {
-    setSyncIndicator('· sync error');
-    console.log('Drive save error:', e);
-  }
-  driveSyncing = false;
-}
-
-async function driveLoad() {
-  if (!accessToken) return;
-  setSyncIndicator('· loading...');
-  try {
-    if (!driveFileId) driveFileId = localStorage.getItem('ct_drive_file') || null;
-    if (!driveFileId) {
-      const sr = await fetch(
-        `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name='${DRIVE_FILE_NAME}'&fields=files(id)`,
-        { headers: { Authorization: `Bearer ${accessToken}` } }
-      );
-      if (sr.status === 401) { setSyncIndicator(''); return; }
-      const sd = await sr.json();
-      if (!sd.files || sd.files.length === 0) { setSyncIndicator(''); await driveSave(); return; }
-      driveFileId = sd.files[0].id;
-      if (HAS_STORAGE) localStorage.setItem('ct_drive_file', driveFileId);
-    }
-    const fr = await fetch(
-      `https://www.googleapis.com/drive/v3/files/${driveFileId}?alt=media`,
-      { headers: { Authorization: `Bearer ${accessToken}` } }
-    );
-    if (fr.status === 401) { setSyncIndicator(''); return; }
-    const d = await fr.json();
-    if (d.persons) persons = d.persons;
-    if (d.tracking) tracking = d.tracking;
-    if (d.manualEvents) manualEvents = d.manualEvents;
-    setSyncIndicator('· loaded ✓');
-    setTimeout(() => setSyncIndicator(''), 2000);
-    render();
-  } catch(e) {
-    setSyncIndicator('· load error');
-    console.log('Drive load error:', e);
-  }
-}
-
-function scheduleDriveRefresh(expiryMs) {
-  if (_driveRefreshTimer) clearTimeout(_driveRefreshTimer);
-  const refreshIn = Math.max(0, expiryMs - Date.now() - 5 * 60 * 1000);
-  _driveRefreshTimer = setTimeout(() => {
-    if (!accessToken || typeof google === 'undefined') return;
-    const hint = userEmail || (HAS_STORAGE ? localStorage.getItem('ct_email') || '' : '');
-    const client = google.accounts.oauth2.initTokenClient({
-      client_id: DRIVE_CLIENT_ID, scope: DRIVE_SCOPE, hint, prompt: '',
-      callback: (r) => {
-        if (r.error) return;
-        accessToken = r.access_token;
-        const newExpiry = Date.now() + (r.expires_in * 1000);
-        if (HAS_STORAGE) {
-          localStorage.setItem('ct_token', accessToken);
-          localStorage.setItem('ct_token_expiry', String(newExpiry));
-        }
-        scheduleDriveRefresh(newExpiry);
-      }
-    });
-    client.requestAccessToken();
-  }, refreshIn);
-}
-
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState !== 'visible' || accessToken) return;
-  if (!HAS_STORAGE) return;
-  const token = localStorage.getItem('ct_token');
-  if (!token) return;
-  const expiry = parseInt(localStorage.getItem('ct_token_expiry') || '0');
-  if (Date.now() < expiry) {
-    accessToken = token;
-    driveFileId = localStorage.getItem('ct_drive_file') || null;
-    updateDriveBar();
-    scheduleDriveRefresh(expiry);
-  }
-});
-
-// ═══════════════════════════════════════════════════════════════
-// GOOGLE CALENDAR — fetch birthday events
-// ═══════════════════════════════════════════════════════════════
-async function loadCalendarEvents() {
-  if (!accessToken || calLoading) return;
-  calLoading = true;
-  calLoaded = false;
-  render();
-  try {
-    // Get all calendars
-    const calResp = await fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList', {
-      headers: { Authorization: `Bearer ${accessToken}` }
-    });
-    if (calResp.status === 401) { calLoading = false; return; }
-    const calData = await calResp.json();
-    const calendars = calData.items || [];
-
-    // Fetch events for current year from all calendars
-    const now = new Date();
-    const yearStart = new Date(now.getFullYear(), 0, 1).toISOString();
-    const yearEnd = new Date(now.getFullYear(), 11, 31, 23, 59, 59).toISOString();
-
-    const allEvents = [];
-    await Promise.all(calendars.map(async (cal) => {
-      try {
-        // Fetch events — include birthday calendars and all others
-        const url = new URL(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(cal.id)}/events`);
-        url.searchParams.set('timeMin', yearStart);
-        url.searchParams.set('timeMax', yearEnd);
-        url.searchParams.set('singleEvents', 'true');
-        url.searchParams.set('maxResults', '500');
-        url.searchParams.set('fields', 'items(id,summary,start,description,organizer)');
-
-        const evResp = await fetch(url.toString(), {
-          headers: { Authorization: `Bearer ${accessToken}` }
-        });
-        if (!evResp.ok) return;
-        const evData = await evResp.json();
-        const items = evData.items || [];
-
-        items.forEach(ev => {
-          const title = (ev.summary || '').trim();
-          if (!title) return;
-          // Detect birthday calendars — Google uses several possible ID patterns
-          const isBirthdayCalendar = cal.id.includes('addressbook') ||
-            cal.id.includes('#contacts@group') ||
-            cal.id.includes('birthday') ||
-            (cal.summary || '').toLowerCase() === 'birthdays' ||
-            (cal.summary || '').toLowerCase() === 'birthday';
-          const titleLower = title.toLowerCase();
-          const looksBirthday = titleLower.includes('birthday');
-          // Include if from a birthday calendar OR title contains "birthday"
-          if (!isBirthdayCalendar && !looksBirthday) return;
-
-          const dateRaw = ev.start?.date || ev.start?.dateTime;
-          if (!dateRaw) return;
-          const date = dateRaw.substring(0, 10); // YYYY-MM-DD
-
-          allEvents.push({
-            id: ev.id,
-            title,
-            date,
-            calendarId: cal.id,
-            calendarName: cal.summary,
-            type: 'birthday'
-          });
-        });
-      } catch(e) {
-        console.log('Calendar fetch error for', cal.id, e);
-      }
+      }catch(e){console.log('cal err',cal.id,e);}
     }));
-
-    // Sort by date
-    allEvents.sort((a, b) => a.date.localeCompare(b.date));
-    calendarEvents = allEvents;
-
-    // Auto-link events to known persons, and detect new ones needing a link prompt
-    calendarEvents.forEach(ev => {
-      // Check if any person has this title as an alias
-      const matchedPerson = Object.entries(persons).find(([id, p]) =>
-        p.aliases && p.aliases.some(a => a.toLowerCase() === ev.title.toLowerCase())
-      );
-      if (matchedPerson) {
-        ev.personId = matchedPerson[0];
-      }
-    });
-
-    calLoading = false;
-    calLoaded = true;
-    render();
-
-    // Check for unlinked new events
-    checkForNewEvents();
-  } catch(e) {
-    console.log('Calendar load error:', e);
-    calLoading = false;
-    calLoaded = true;
-    render();
-  }
+    evs.sort((a,b)=>a.date.localeCompare(b.date));
+    calendarEvents=evs;
+    calendarEvents.forEach(ev=>{const m=Object.entries(persons).find(([id,p])=>p.aliases&&p.aliases.some(a=>a.toLowerCase()===ev.title.toLowerCase()));if(m)ev.personId=m[0];});
+    calLoading=false;calLoaded=true;render();setTimeout(checkNewEvs,300);
+  }catch(e){console.log('loadCal err',e);calLoading=false;calLoaded=true;render();}
 }
-
-// ═══════════════════════════════════════════════════════════════
-// PERSON & TRACKING MANAGEMENT
-// ═══════════════════════════════════════════════════════════════
-function genId() { return Math.random().toString(36).substr(2, 9) + Date.now().toString(36); }
-
-function getOrCreatePerson(name, aliasTitle) {
-  // Check by alias
-  const existing = Object.entries(persons).find(([id, p]) =>
-    p.name.toLowerCase() === name.toLowerCase() ||
-    (p.aliases && p.aliases.some(a => a.toLowerCase() === (aliasTitle || '').toLowerCase()))
-  );
-  if (existing) return existing[0];
-  const id = genId();
-  persons[id] = { name, aliases: aliasTitle ? [aliasTitle] : [] };
-  if (!tracking[id]) tracking[id] = {};
-  return id;
+function getOrCreate(name,alias,birthYear){const ex=Object.entries(persons).find(([id,p])=>p.name.toLowerCase()===name.toLowerCase()||(p.aliases&&p.aliases.some(a=>a.toLowerCase()===(alias||'').toLowerCase())));if(ex)return ex[0];const id=genId();persons[id]={name,aliases:alias?[alias]:[],birthYear:birthYear||null};if(!tracking[id])tracking[id]={};return id;}
+function getTrk(pid,yr){if(!tracking[pid])tracking[pid]={};if(!tracking[pid][yr])tracking[pid][yr]={sent:false,dateSent:'',notes:''};return tracking[pid][yr];}
+function setTrk(pid,yr,f,v){getTrk(pid,yr)[f]=v;if(f==='dateSent'&&v)tracking[pid][yr].sent=true;driveSave();render();}
+function toggleSent(pid,yr){const t=getTrk(pid,yr);t.sent=!t.sent;if(t.sent&&!t.dateSent){const td=new Date();t.dateSent=td.getFullYear()+'-'+p2(td.getMonth()+1)+'-'+p2(td.getDate());}driveSave();render();}
+function checkNewEvs(){const u=calendarEvents.find(ev=>!ev.personId);if(!u)return;if(Object.keys(persons).length===0){calendarEvents.forEach(ev=>{if(!ev.personId){ev.personId=getOrCreate(ev.title,ev.title);}});driveSave();render();return;}openLinkDlg(u);}
+function openLinkDlg(ev){pendingLinkEvent=ev;document.getElementById('link-dialog-sub').textContent='"'+ev.title+'" is new. Link to an existing person or create a new entry.';const list=document.getElementById('link-person-list');const pl=Object.entries(persons).sort((a,b)=>a[1].name.localeCompare(b[1].name));list.style.display=pl.length===0?'none':'';list.innerHTML=pl.map(([id,p])=>'<div class="dialog-person-row" onclick="linkTo(\''+id+'\')">'+p.name+'</div>').join('');document.getElementById('link-dialog').style.display='flex';}
+function linkTo(pid){if(!pendingLinkEvent)return;const ev=pendingLinkEvent;if(!persons[pid].aliases)persons[pid].aliases=[];if(!persons[pid].aliases.includes(ev.title))persons[pid].aliases.push(ev.title);ev.personId=pid;pendingLinkEvent=null;document.getElementById('link-dialog').style.display='none';driveSave();setTimeout(checkNewEvs,300);render();}
+function linkAsNew(){if(!pendingLinkEvent)return;const ev=pendingLinkEvent;ev.personId=getOrCreate(ev.title,ev.title);pendingLinkEvent=null;document.getElementById('link-dialog').style.display='none';driveSave();setTimeout(checkNewEvs,300);render();}
+function closeLinkDialog(e){if(e&&e.target!==document.getElementById('link-dialog'))return;document.getElementById('link-dialog').style.display='none';pendingLinkEvent=null;}
+function addAppBday(){const name=addBdayData.name.trim(),mo=parseInt(addBdayData.month),d=parseInt(addBdayData.day),by=addBdayData.birthYear?parseInt(addBdayData.birthYear):null;if(!name||!mo||!d){alert('Please enter a name, month, and day.');return;}if(mo<1||mo>12){alert('Month must be 1-12.');return;}if(d<1||d>31){alert('Day must be 1-31.');return;}const pid=getOrCreate(name,null,by);if(by&&persons[pid])persons[pid].birthYear=by;appBirthdays.push({id:genId(),name,month:mo,day:d,birthYear:by,personId:pid});addBdayData={name:'',month:'',day:'',birthYear:''};showAddBirthdayForm=false;driveSave();render();}
+function delAppBday(id){if(!confirm('Remove this birthday?'))return;appBirthdays=appBirthdays.filter(b=>b.id!==id);driveSave();render();}
+function addManualEv(){const name=addEventData.name.trim(),date=addEventData.date,type=addEventData.type;if(!name||!date){alert('Please enter a name and date.');return;}const pid=getOrCreate(name);manualEvents.push({id:genId(),title:name,date,type,personId:pid});addEventData={name:'',date:'',type:'Birthday'};showAddEventForm=false;driveSave();render();}
+function delManualEv(id){if(!confirm('Remove this event?'))return;manualEvents=manualEvents.filter(e=>e.id!==id);driveSave();render();}
+function getAllEvs(year){
+  const evs=[];
+  calendarEvents.forEach(ev=>{const mo=parseInt(ev.date.substring(5,7)),d=parseInt(ev.date.substring(8,10)),pid=ev.personId,by=pid&&persons[pid]?persons[pid].birthYear:null;evs.push({id:'cal_'+ev.id,displayName:pid&&persons[pid]?persons[pid].name:ev.title,month:mo,day:d,trackingYear:year,personId:pid,birthYear:by,type:'birthday',isCal:true,sourceId:ev.id,needsLink:!pid});});
+  appBirthdays.forEach(b=>{const by=b.birthYear||(persons[b.personId]?persons[b.personId].birthYear:null);evs.push({id:'bday_'+b.id,displayName:b.name,month:b.month,day:b.day,trackingYear:year,personId:b.personId,birthYear:by,type:'birthday',isAppBday:true,sourceId:b.id});});
+  manualEvents.forEach(ev=>{const ey=parseInt(ev.date.substring(0,4));if(ey!==year)return;const mo=parseInt(ev.date.substring(5,7)),d=parseInt(ev.date.substring(8,10));evs.push({id:'manual_'+ev.id,displayName:ev.title,month:mo,day:d,trackingYear:year,personId:ev.personId,birthYear:null,type:ev.type,isManual:true,sourceId:ev.id});});
+  return evs;
 }
-
-function getTrackingForYear(personId, year) {
-  if (!tracking[personId]) tracking[personId] = {};
-  if (!tracking[personId][year]) tracking[personId][year] = { sent: false, dateSent: '', notes: '' };
-  return tracking[personId][year];
+function ageLabel(by,yr){if(!by)return'';return'Turning '+(yr-by)+' in '+yr;}
+function setTab(t){activeTab=t;['upcoming','calendar','month','year'].forEach(x=>document.getElementById('tab-'+x).classList.toggle('active',x===t));render();}
+function render(){
+  if(!accessToken)return;
+  if(activeTab==='calendar'){renderCal();return;}
+  const ns=todayStr(),nd=new Date(ns),ty=nd.getFullYear(),tm=nd.getMonth();
+  const allEvs=getAllEvs(ty);
+  let filtered=[];
+  if(activeTab==='upcoming'){
+    const cut=new Date(nd);cut.setDate(cut.getDate()+upcomingDays);
+    filtered=allEvs.filter(ev=>{ const o=upcomingOcc(ev.month,ev.day,nd);return o>=nd&&o<=cut;});
+    filtered.sort((a,b)=>upcomingOcc(a.month,a.day,nd)-upcomingOcc(b.month,b.day,nd));
+    filtered.forEach(ev=>{ev.trackingYear=upcomingYr(ev.month,ev.day,nd);});
+  }else if(activeTab==='month'){filtered=allEvs.filter(ev=>ev.month===tm+1);filtered.sort((a,b)=>a.day-b.day);}
+  else{filtered=allEvs.sort((a,b)=>a.month!==b.month?a.month-b.month:a.day-b.day);}
+  const tot=filtered.length,sent=filtered.filter(ev=>ev.personId&&tracking[ev.personId]&&tracking[ev.personId][ev.trackingYear]&&tracking[ev.personId][ev.trackingYear].sent).length;
+  document.getElementById('summary-bar').innerHTML='<div class="chip"><span>'+tot+'</span>'+(activeTab==='upcoming'?'Upcoming':activeTab==='month'?'This Month':'This Year')+'</div><div class="chip" style="background:rgba(232,245,233,0.95);color:#2e7d32;"><span>'+sent+'</span>Cards Sent</div><div class="chip" style="background:rgba(255,240,245,0.95);color:#c2185b;"><span>'+(tot-sent)+'</span>Pending</div>';
+  let html='';
+  if(calLoading)html+='<div class="loading-state">Loading your calendar events...</div>';
+  if(activeTab==='upcoming')html+='<div class="window-bar">'+[14,30,60,90].map(d=>'<button class="window-btn'+(upcomingDays===d?' active':'')+'" onclick="setWin('+d+')">Next '+d+'d</button>').join('')+'</div>';
+  html+='<div class="add-btns-row"><button class="add-toggle-btn" onclick="togBday()">🎂 Add birthday</button><button class="add-toggle-btn" onclick="togEv()">💌 Add one-time event</button></div>';
+  if(showAddBirthdayForm)html+=buildBdayForm();
+  if(showAddEventForm)html+=buildEvForm();
+  if(filtered.length===0&&!calLoading)html+='<div class="empty-state"><span class="empty-icon">💌</span>'+(activeTab==='upcoming'?'No events in the next '+upcomingDays+' days.':activeTab==='month'?'No events this month.':'No events this year.')+'<br><small>Add a birthday or event above.</small></div>';
+  else if(activeTab==='year'){let cm=-1;filtered.forEach(ev=>{if(ev.month!==cm){cm=ev.month;html+='<div class="month-group-hdr">📅 '+MONTHS[ev.month-1]+'</div>';}html+=buildCard(ev,nd);});}
+  else filtered.forEach(ev=>{html+=buildCard(ev,nd);});
+  document.getElementById('view').innerHTML=html;
 }
-
-function setTracking(personId, year, field, value) {
-  if (!tracking[personId]) tracking[personId] = {};
-  if (!tracking[personId][year]) tracking[personId][year] = { sent: false, dateSent: '', notes: '' };
-  tracking[personId][year][field] = value;
-  // Auto-set sent=true when a date is provided
-  if (field === 'dateSent' && value) tracking[personId][year].sent = true;
-  driveSave();
-  render();
+function buildCard(ev,nd){
+  const pid=ev.personId,t=pid?getTrk(pid,ev.trackingYear):{sent:false,dateSent:'',notes:''},sent=t.sent||false,isOpen=!!expandedEvents[ev.id],icon=getIcon(ev.type),da=daysUntil(ev.month,ev.day);
+  let dl='';if(activeTab==='upcoming'){if(da===0)dl=' · <strong style="color:#c2185b;">Today!</strong>';else if(da===1)dl=' · <strong style="color:#e65100;">Tomorrow</strong>';else dl=' · <span style="color:#7b2fbe;">in '+da+' days</span>';}
+  const al=ev.birthYear?ageLabel(ev.birthYear,ev.trackingYear):'',sb=sent?'<span class="event-sent-badge">✓ Card sent'+(t.dateSent?' · '+fmtShort(t.dateSent):'')+'</span>':'';
+  const tc=ev.isAppBday?'app-bday':ev.isManual?'manual-ev':'',sc=sent?' sent':'';
+  return '<div class="event-card '+tc+sc+'"><div class="event-top" onclick="togEv2(\''+ev.id+'\')"><div class="event-icon">'+icon+'</div><div class="event-info"><div class="event-name">'+ev.displayName+(ev.isManual&&ev.type!=='Birthday'?' <span style="font-size:10px;color:#9d6bbf;font-weight:400;">'+ev.type+'</span>':'')+'</div><div class="event-date">'+fmtMD(ev.month,ev.day)+dl+'</div>'+(al?'<div class="event-age">'+al+'</div>':'')+sb+(ev.needsLink?'<span style="font-size:10px;color:#9d6bbf;">· <a href="javascript:void(0)" onclick="event.stopPropagation();relink(\''+ev.sourceId+'\')">Link to person</a></span>':'')+'</div><span class="event-arrow'+(isOpen?' open':'')+'">&#9655;</span></div>'+(isOpen&&pid?buildPanel(pid,ev.trackingYear,ev):'')+(isOpen&&!pid?'<div class="tracking-panel"><div style="font-size:12px;color:#888;padding:4px 0;">Link this event to a person to start tracking cards.</div></div>':'')+'</div>';
 }
-
-function toggleSent(personId, year) {
-  if (!tracking[personId]) tracking[personId] = {};
-  if (!tracking[personId][year]) tracking[personId][year] = { sent: false, dateSent: '', notes: '' };
-  const t = tracking[personId][year];
-  t.sent = !t.sent;
-  if (t.sent && !t.dateSent) {
-    const today = new Date();
-    t.dateSent = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
-  }
-  driveSave();
-  render();
+function buildPanel(pid,yr,ev){
+  const t=getTrk(pid,yr),oys=Object.keys(tracking[pid]||{}).map(Number).filter(y=>y!==yr).sort((a,b)=>b-a);
+  const hist=oys.length>0?'<div class="history-section"><div class="history-lbl">Past years</div>'+oys.map(y=>{const h=tracking[pid][y];return'<div class="history-row"><span class="history-year">'+y+'</span><div>'+(h.sent?'<span class="history-sent">✓ Card sent'+(h.dateSent?' · '+fmtShort(h.dateSent):'')+'</span>':'<span class="history-not">No card recorded</span>')+(h.notes?'<div class="history-note">'+h.notes+'</div>':'')+'</div></div>';}).join('')+'</div>':'';
+  return '<div class="tracking-panel"><div class="tracking-row"><div class="chk-box'+(t.sent?' checked':'')+'" onclick="toggleSent(\''+pid+'\','+yr+')">'+(t.sent?'✓':'')+'</div><span class="chk-lbl">'+(t.sent?'Card sent!':'Mark card as sent')+'</span></div>'+(t.sent?'<div style="margin-bottom:10px;"><div class="field-lbl">Date sent</div><input type="date" class="date-input" value="'+(t.dateSent||'')+'" onchange="setTrk(\''+pid+'\','+yr+',\'dateSent\',this.value)"></div>':'')+'<div><div class="field-lbl">Notes</div><textarea class="notes-ta" placeholder="Card type, design used, anything to remember..." onchange="setTrk(\''+pid+'\','+yr+',\'notes\',this.value)">'+( t.notes||'')+'</textarea></div>'+(ev.isAppBday?'<div style="margin-top:8px;text-align:right;"><button style="font-size:10px;color:#c2185b;background:none;border:none;cursor:pointer;" onclick="delAppBday(\''+ev.sourceId+'\')">Remove birthday</button></div>':'')+(ev.isManual?'<div style="margin-top:8px;text-align:right;"><button style="font-size:10px;color:#c2185b;background:none;border:none;cursor:pointer;" onclick="delManualEv(\''+ev.sourceId+'\')">Remove event</button></div>':'')+hist+'</div>';
 }
-
-// ═══════════════════════════════════════════════════════════════
-// LINK DIALOG — for unlinked calendar events
-// ═══════════════════════════════════════════════════════════════
-function checkForNewEvents() {
-  // Find first unlinked calendar event that has no person
-  const unlinked = calendarEvents.find(ev => !ev.personId);
-  if (!unlinked) return;
-  // Only prompt if we have existing persons (otherwise they're all new)
-  if (Object.keys(persons).length === 0) {
-    // Auto-create all as new persons
-    calendarEvents.forEach(ev => {
-      if (!ev.personId) {
-        const name = cleanBirthdayName(ev.title);
-        const pid = getOrCreatePerson(name, ev.title);
-        ev.personId = pid;
-      }
-    });
-    driveSave();
-    render();
-    return;
-  }
-  // Show dialog for first unlinked
-  openLinkDialog(unlinked);
+function buildBdayForm(){return '<div class="add-form"><div class="add-form-title">🎂 Add a birthday</div><div class="form-field"><div class="form-lbl">Name</div><input type="text" class="form-input" placeholder="e.g. Karen" value="'+addBdayData.name+'" oninput="addBdayData.name=this.value"></div><div class="form-row"><div class="form-field"><div class="form-lbl">Month (1-12)</div><input type="number" class="form-input" placeholder="7" min="1" max="12" value="'+addBdayData.month+'" oninput="addBdayData.month=this.value"></div><div class="form-field"><div class="form-lbl">Day</div><input type="number" class="form-input" placeholder="17" min="1" max="31" value="'+addBdayData.day+'" oninput="addBdayData.day=this.value"></div></div><div class="form-field"><div class="form-lbl">Birth year <span style="color:#bbb;font-weight:400;">(optional - shows age)</span></div><input type="number" class="form-input" placeholder="e.g. 1985" min="1900" max="2025" value="'+addBdayData.birthYear+'" oninput="addBdayData.birthYear=this.value"></div><button class="add-btn" onclick="addAppBday()">Add birthday</button><button class="cancel-add-btn" onclick="togBday()">Cancel</button></div>';}
+function buildEvForm(){return '<div class="add-form"><div class="add-form-title">💌 Add a one-time event</div><div class="form-field"><div class="form-lbl">Person\'s name</div><input type="text" class="form-input" placeholder="e.g. Sally" value="'+addEventData.name+'" oninput="addEventData.name=this.value"></div><div class="form-row"><div class="form-field"><div class="form-lbl">Date</div><input type="date" class="form-input" value="'+addEventData.date+'" onchange="addEventData.date=this.value"></div><div class="form-field"><div class="form-lbl">Event type</div><select class="form-input" onchange="addEventData.type=this.value">'+['Birthday','Graduation','New Baby','Wedding','Anniversary','Sympathy','Holiday','Other'].map(tp=>'<option value="'+tp+'"'+(addEventData.type===tp?' selected':'')+'>'+tp+'</option>').join('')+'</select></div></div><button class="add-btn" onclick="addManualEv()">Add event</button><button class="cancel-add-btn" onclick="togEv()">Cancel</button></div>';}
+function renderCal(){
+  const yr=calViewYear,mo=calViewMonth,allEvs=getAllEvs(yr);
+  const dm={};allEvs.forEach(ev=>{if(ev.month!==mo+1)return;if(!dm[ev.day])dm[ev.day]=[];dm[ev.day].push(ev);});
+  const mes=allEvs.filter(ev=>ev.month===mo+1),sc=mes.filter(ev=>ev.personId&&tracking[ev.personId]&&tracking[ev.personId][yr]&&tracking[ev.personId][yr].sent).length;
+  document.getElementById('summary-bar').innerHTML='<div class="chip"><span>'+mes.length+'</span>'+MONTHS[mo]+'</div><div class="chip" style="background:rgba(232,245,233,0.95);color:#2e7d32;"><span>'+sc+'</span>Cards Sent</div><div class="chip" style="background:rgba(255,240,245,0.95);color:#c2185b;"><span>'+(mes.length-sc)+'</span>Pending</div>';
+  const ts=todayStr(),nd=new Date(ts),fd=new Date(yr,mo,1).getDay(),dim=new Date(yr,mo+1,0).getDate();
+  let h='<div class="cal-nav"><button class="cal-nav-btn" onclick="calPrev()">&#8592;</button><span class="cal-month-lbl">'+MONTHS[mo]+' '+yr+'</span><button class="cal-nav-btn" onclick="calNext()">&#8594;</button></div>';
+  h+='<div class="cal-grid"><div class="cal-dow-row">'+DAYS_SHORT.map(d=>'<div class="cal-dow">'+d+'</div>').join('')+'</div><div class="cal-days">';
+  for(let i=0;i<fd;i++)h+='<div class="cal-day other-month"><span class="cal-day-num"></span></div>';
+  for(let d=1;d<=dim;d++){const ds=yr+'-'+p2(mo+1)+'-'+p2(d),isT=ds===ts,isSel=ds===calSelectedDay,evs=dm[d]||[],he=evs.length>0;const dots=evs.slice(0,4).map(ev=>{const isSnt=ev.personId&&tracking[ev.personId]&&tracking[ev.personId][yr]&&tracking[ev.personId][yr].sent;return'<div class="cal-dot'+(isSnt?' sent':ev.isManual||ev.isAppBday?' pink':'')+'"></div>';}).join('');h+='<div class="cal-day'+(isT?' today':'')+(isSel?' selected':'')+(he?' has-event':'')+'"'+(he?' onclick="calSel(\''+ds+'\')"':'')+'>  <span class="cal-day-num">'+d+'</span>'+(dots?'<div class="cal-dots">'+dots+'</div>':'')+'</div>';}
+  const tc=fd+dim,tr=(7-tc%7)%7;for(let i=0;i<tr;i++)h+='<div class="cal-day other-month"><span class="cal-day-num"></span></div>';
+  h+='</div></div>';
+  h+='<div style="display:flex;gap:14px;font-size:11px;color:#9d6bbf;margin-bottom:8px;padding:0 2px;"><span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4B0082;margin-right:4px;vertical-align:middle;"></span>Birthday</span><span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#FF6B9D;margin-right:4px;vertical-align:middle;"></span>Added/One-time</span><span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4CAF50;margin-right:4px;vertical-align:middle;"></span>Card sent</span></div>';
+  if(calSelectedDay){const sd=parseInt(calSelectedDay.substring(8,10)),sm=parseInt(calSelectedDay.substring(5,7));if(sm===mo+1){const se=dm[sd]||[];if(se.length>0){h+='<div class="cal-popup"><div class="cal-popup-hdr">📅 '+MONTHS[mo]+' '+sd+'</div>';se.forEach(ev=>{ev.trackingYear=yr;h+=buildCard(ev,nd);});h+='</div>';}}}
+  h+='<div class="add-btns-row"><button class="add-toggle-btn" onclick="togBday()">🎂 Add birthday</button><button class="add-toggle-btn" onclick="togEv()">💌 Add one-time event</button></div>';
+  if(showAddBirthdayForm)h+=buildBdayForm();if(showAddEventForm)h+=buildEvForm();
+  document.getElementById('view').innerHTML=h;
 }
-
-function cleanBirthdayName(title) {
-  return title
-    .replace(/'?s?\s*birthday\s*/gi, '')
-    .replace(/\s*birthday\s*/gi, '')
-    .trim() || title;
-}
-
-function openLinkDialog(ev) {
-  pendingLinkEvent = ev;
-  const sub = document.getElementById('link-dialog-sub');
-  sub.textContent = `"${ev.title}" is a new calendar event. Is this someone you already have in the tracker?`;
-
-  const list = document.getElementById('link-person-list');
-  const personList = Object.entries(persons).sort((a,b) => a[1].name.localeCompare(b[1].name));
-  if (personList.length === 0) {
-    list.style.display = 'none';
-  } else {
-    list.style.display = '';
-    list.innerHTML = personList.map(([id, p]) =>
-      `<div class="dialog-person-row" onclick="linkToPerson('${id}')">${p.name}</div>`
-    ).join('');
-  }
-  document.getElementById('link-dialog').style.display = 'flex';
-}
-
-function linkToPerson(personId) {
-  if (!pendingLinkEvent) return;
-  const ev = pendingLinkEvent;
-  if (!persons[personId].aliases) persons[personId].aliases = [];
-  if (!persons[personId].aliases.includes(ev.title)) {
-    persons[personId].aliases.push(ev.title);
-  }
-  ev.personId = personId;
-  pendingLinkEvent = null;
-  document.getElementById('link-dialog').style.display = 'none';
-  driveSave();
-  // Check for next unlinked
-  setTimeout(checkForNewEvents, 300);
-  render();
-}
-
-function linkAsNew() {
-  if (!pendingLinkEvent) return;
-  const ev = pendingLinkEvent;
-  const name = cleanBirthdayName(ev.title);
-  const pid = getOrCreatePerson(name, ev.title);
-  ev.personId = pid;
-  pendingLinkEvent = null;
-  document.getElementById('link-dialog').style.display = 'none';
-  driveSave();
-  setTimeout(checkForNewEvents, 300);
-  render();
-}
-
-function closeLinkDialog(e) {
-  if (e && e.target !== document.getElementById('link-dialog')) return;
-  document.getElementById('link-dialog').style.display = 'none';
-  pendingLinkEvent = null;
-}
-
-// ═══════════════════════════════════════════════════════════════
-// MANUAL EVENTS
-// ═══════════════════════════════════════════════════════════════
-function addManualEvent() {
-  const name = addFormData.name.trim();
-  const date = addFormData.date;
-  const type = addFormData.type;
-  if (!name || !date) { alert('Please enter a name and date.'); return; }
-
-  const pid = getOrCreatePerson(name);
-  const id = genId();
-  manualEvents.push({ id, title: name, date, type, personId: pid });
-  addFormData = { name: '', date: '', type: 'Birthday' };
-  showAddForm = false;
-  driveSave();
-  render();
-}
-
-function deleteManualEvent(id) {
-  if (!confirm('Remove this event?')) return;
-  manualEvents = manualEvents.filter(e => e.id !== id);
-  driveSave();
-  render();
-}
-
-// ═══════════════════════════════════════════════════════════════
-// HELPERS
-// ═══════════════════════════════════════════════════════════════
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-
-function today() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
-
-function formatDate(dateStr) {
-  if (!dateStr) return '';
-  const [y, m, d] = dateStr.split('-').map(Number);
-  const dt = new Date(y, m-1, d);
-  return `${DAYS[dt.getDay()]}, ${MONTHS[m-1]} ${d}`;
-}
-
-function formatDateShort(dateStr) {
-  if (!dateStr) return '';
-  const [y, m, d] = dateStr.split('-').map(Number);
-  return `${MONTHS_SHORT[m-1]} ${d}`;
-}
-
-function daysUntil(dateStr) {
-  const t = today();
-  const [ty,tm,td] = t.split('-').map(Number);
-  const [ey,em,ed] = dateStr.split('-').map(Number);
-  // Compare month-day only (birthdays recur yearly)
-  let eventThisYear = new Date(ty, em-1, ed);
-  const todayDate = new Date(ty, tm-1, td);
-  if (eventThisYear < todayDate) {
-    eventThisYear = new Date(ty+1, em-1, ed);
-  }
-  const diff = Math.round((eventThisYear - todayDate) / (1000*60*60*24));
-  return diff;
-}
-
-function getEventYear(dateStr) {
-  return dateStr ? parseInt(dateStr.substring(0, 4)) : new Date().getFullYear();
-}
-
-function getAllEvents() {
-  const now = today();
-  const linked = calendarEvents.map(ev => ({
-    ...ev,
-    isManual: false
-  }));
-  const manual = manualEvents.map(ev => ({
-    ...ev,
-    type: ev.type || 'Event',
-    isManual: true
-  }));
-  return [...linked, ...manual].sort((a,b) => a.date.localeCompare(b.date));
-}
-
-function getEventIcon(type) {
-  const t = (type || '').toLowerCase();
-  if (t.includes('birthday')) return '🎂';
-  if (t.includes('graduation')) return '🎓';
-  if (t.includes('baby') || t.includes('birth')) return '👶';
-  if (t.includes('wedding') || t.includes('anniversary')) return '💍';
-  if (t.includes('sympathy') || t.includes('condolence')) return '🌸';
-  if (t.includes('holiday') || t.includes('christmas')) return '🎄';
-  return '💌';
-}
-
-// ═══════════════════════════════════════════════════════════════
-// TABS
-// ═══════════════════════════════════════════════════════════════
-function setTab(tab) {
-  activeTab = tab;
-  ['upcoming','month','year'].forEach(t => {
-    document.getElementById(`tab-${t}`).classList.toggle('active', t === tab);
-  });
-  render();
-}
-
-// ═══════════════════════════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════════════════════════
-function render() {
-  if (!accessToken) return;
-  const all = getAllEvents();
-  const now = today();
-  const nowDate = new Date(now);
-  const thisYear = nowDate.getFullYear();
-  const thisMonth = nowDate.getMonth(); // 0-indexed
-
-  // Filter events by tab
-  let filtered = [];
-  if (activeTab === 'upcoming') {
-    const cutoff = new Date(nowDate);
-    cutoff.setDate(cutoff.getDate() + upcomingDays);
-    filtered = all.filter(ev => {
-      const [y,m,d] = ev.date.split('-').map(Number);
-      // For recurring birthdays: show occurrence this year (or next if passed)
-      let check = new Date(thisYear, m-1, d);
-      if (check < nowDate) check = new Date(thisYear+1, m-1, d);
-      return check >= nowDate && check <= cutoff;
-    });
-    // Sort by upcoming occurrence
-    filtered.sort((a,b) => {
-      const aD = upcomingDate(a.date, nowDate);
-      const bD = upcomingDate(b.date, nowDate);
-      return aD - bD;
-    });
-  } else if (activeTab === 'month') {
-    filtered = all.filter(ev => {
-      const m = parseInt(ev.date.substring(5,7)) - 1;
-      return m === thisMonth;
-    });
-    filtered.sort((a,b) => parseInt(a.date.substring(8,10)) - parseInt(b.date.substring(8,10)));
-  } else {
-    filtered = all;
-    filtered.sort((a,b) => {
-      const am = parseInt(a.date.substring(5,7));
-      const bm = parseInt(b.date.substring(5,7));
-      if (am !== bm) return am - bm;
-      return parseInt(a.date.substring(8,10)) - parseInt(b.date.substring(8,10));
-    });
-  }
-
-  // Summary stats
-  const totalCount = filtered.length;
-  const sentCount = filtered.filter(ev => {
-    if (!ev.personId) return false;
-    const yr = activeTab === 'upcoming' ? getUpcomingYear(ev.date, nowDate) : getEventYear(ev.date);
-    const t = tracking[ev.personId]?.[yr];
-    return t?.sent;
-  }).length;
-  const pendingCount = totalCount - sentCount;
-
-  document.getElementById('summary-bar').innerHTML = `
-    <div class="chip"><span>${totalCount}</span>${activeTab === 'upcoming' ? `Upcoming` : activeTab === 'month' ? 'This Month' : 'This Year'}</div>
-    <div class="chip" style="background:rgba(232,245,233,0.95);color:#2e7d32;"><span>${sentCount}</span>Cards Sent</div>
-    <div class="chip" style="background:rgba(255,240,245,0.95);color:#c2185b;"><span>${pendingCount}</span>Pending</div>
-  `;
-
-  let html = '';
-
-  // Loading indicator
-  if (calLoading) {
-    html += `<div class="loading-state">Loading your calendar events…</div>`;
-  }
-
-  // Window selector (upcoming tab only)
-  if (activeTab === 'upcoming') {
-    html += `<div class="window-bar">
-      ${[14,30,60,90].map(d =>
-        `<button class="window-btn${upcomingDays===d?' active':''}" onclick="setWindow(${d})">Next ${d}d</button>`
-      ).join('')}
-    </div>`;
-  }
-
-  // Add event toggle
-  if (showAddForm) {
-    html += buildAddForm();
-  } else {
-    html += `<button class="add-toggle-btn" onclick="toggleAddForm()">➕ Add a one-time event</button>`;
-  }
-
-  // Events
-  if (filtered.length === 0 && !calLoading) {
-    const msg = activeTab === 'upcoming'
-      ? `No events in the next ${upcomingDays} days.`
-      : activeTab === 'month'
-      ? `No events this month.`
-      : 'No events this year.';
-    html += `<div class="empty-state"><span class="empty-icon">💌</span>${msg}<br><small>Add a one-time event above, or make sure your Google Calendar has birthday events.</small></div>`;
-  } else {
-    if (activeTab === 'year') {
-      // Group by month
-      let currentMonth = -1;
-      filtered.forEach(ev => {
-        const m = parseInt(ev.date.substring(5,7)) - 1;
-        if (m !== currentMonth) {
-          currentMonth = m;
-          html += `<div class="month-group-hdr">📅 ${MONTHS[m]}</div>`;
-        }
-        html += buildEventCard(ev, nowDate, activeTab);
-      });
-    } else {
-      filtered.forEach(ev => {
-        html += buildEventCard(ev, nowDate, activeTab);
-      });
-    }
-  }
-
-  document.getElementById('view').innerHTML = html;
-}
-
-function upcomingDate(dateStr, fromDate) {
-  const [y,m,d] = dateStr.split('-').map(Number);
-  let dt = new Date(fromDate.getFullYear(), m-1, d);
-  if (dt < fromDate) dt = new Date(fromDate.getFullYear()+1, m-1, d);
-  return dt;
-}
-
-function getUpcomingYear(dateStr, fromDate) {
-  return upcomingDate(dateStr, fromDate).getFullYear();
-}
-
-function buildEventCard(ev, nowDate, tabMode) {
-  const eventYear = tabMode === 'upcoming'
-    ? getUpcomingYear(ev.date, nowDate)
-    : getEventYear(ev.date);
-
-  const pid = ev.personId;
-  const t = pid ? (tracking[pid]?.[eventYear] || { sent: false, dateSent: '', notes: '' }) : null;
-  const sent = t?.sent || false;
-  const isOpen = !!expandedEvents[ev.id];
-
-  const icon = getEventIcon(ev.type);
-  const dateDisplay = formatDate(ev.date);
-  const daysAway = tabMode === 'upcoming' ? daysUntil(ev.date) : null;
-
-  let daysLabel = '';
-  if (daysAway !== null) {
-    if (daysAway === 0) daysLabel = ' · <strong style="color:#c2185b;">Today!</strong>';
-    else if (daysAway === 1) daysLabel = ' · <strong style="color:#e65100;">Tomorrow</strong>';
-    else daysLabel = ` · <span style="color:#7b2fbe;">in ${daysAway} days</span>`;
-  }
-
-  const sentBadge = sent
-    ? `<span class="event-sent-badge">✓ Card sent${t.dateSent ? ' · '+formatDateShort(t.dateSent) : ''}</span>`
-    : '';
-
-  const personName = pid && persons[pid] ? persons[pid].name : ev.title;
-  const isManualClass = ev.isManual ? ' manual-event' : '';
-  const sentClass = sent ? ' sent' : '';
-
-  const needsLink = !pid && !ev.isManual;
-
-  return `<div class="event-card${isManualClass}${sentClass}">
-    <div class="event-top" onclick="toggleEvent('${ev.id}')">
-      <div class="event-icon">${icon}</div>
-      <div class="event-info">
-        <div class="event-name">${personName}${ev.isManual && ev.type !== 'Birthday' ? ` <span style="font-size:10px;color:#9d6bbf;font-weight:400;">${ev.type}</span>` : ''}</div>
-        <div class="event-date">${dateDisplay}${daysLabel}</div>
-        ${sentBadge}
-        ${needsLink ? `<span style="font-size:10px;color:#9d6bbf;">· <a href="javascript:void(0)" onclick="event.stopPropagation();recheckLink('${ev.id}')">Link to person</a></span>` : ''}
-      </div>
-      <span class="event-arrow${isOpen?' open':''}">&#9655;</span>
-    </div>
-    ${isOpen && pid ? buildTrackingPanel(pid, eventYear, ev) : ''}
-    ${isOpen && !pid && !ev.isManual ? `<div class="tracking-panel"><div style="font-size:12px;color:#888;padding:4px 0;">Tap "Link to person" above to start tracking cards for ${personName}.</div></div>` : ''}
-  </div>`;
-}
-
-function buildTrackingPanel(personId, year, ev) {
-  const t = getTrackingForYear(personId, year);
-
-  // History (all years except current)
-  const allYears = Object.keys(tracking[personId] || {})
-    .map(Number)
-    .filter(y => y !== year)
-    .sort((a,b) => b-a);
-
-  const historyHtml = allYears.length > 0 ? `
-    <div class="history-section">
-      <div class="history-lbl">Past years</div>
-      ${allYears.map(y => {
-        const h = tracking[personId][y];
-        return `<div class="history-row">
-          <span class="history-year">${y}</span>
-          <div>
-            ${h.sent
-              ? `<span class="history-sent">✓ Card sent${h.dateSent ? ' · '+formatDateShort(h.dateSent) : ''}</span>`
-              : `<span class="history-not">No card recorded</span>`}
-            ${h.notes ? `<div class="history-note">${h.notes}</div>` : ''}
-          </div>
-        </div>`;
-      }).join('')}
-    </div>
-  ` : '';
-
-  return `<div class="tracking-panel">
-    <div class="tracking-row">
-      <div class="chk-box${t.sent?' checked':''}" onclick="toggleSent('${personId}',${year})">${t.sent?'✓':''}</div>
-      <span class="chk-lbl">${t.sent ? 'Card sent!' : 'Mark card as sent'}</span>
-    </div>
-    ${t.sent ? `
-    <div style="margin-bottom:10px;">
-      <div class="field-lbl">Date sent</div>
-      <input type="date" class="date-input" value="${t.dateSent||''}"
-        onchange="setTracking('${personId}',${year},'dateSent',this.value)">
-    </div>` : ''}
-    <div>
-      <div class="field-lbl">Notes</div>
-      <textarea class="notes-ta" placeholder="Card type, design used, anything to remember…"
-        onchange="setTracking('${personId}',${year},'notes',this.value)"
-        >${t.notes||''}</textarea>
-    </div>
-    ${ev.isManual ? `<div style="margin-top:8px;text-align:right;"><button style="font-size:10px;color:#c2185b;background:none;border:none;cursor:pointer;padding:2px 0;" onclick="deleteManualEvent('${ev.id}')">Remove event</button></div>` : ''}
-    ${historyHtml}
-  </div>`;
-}
-
-function buildAddForm() {
-  return `<div class="add-form">
-    <div class="add-form-title">➕ Add a one-time event</div>
-    <div class="form-field">
-      <div class="form-lbl">Person's name</div>
-      <input type="text" class="form-input" placeholder="e.g. Sally" value="${addFormData.name}"
-        oninput="addFormData.name=this.value">
-    </div>
-    <div class="form-row">
-      <div class="form-field">
-        <div class="form-lbl">Date</div>
-        <input type="date" class="form-input" value="${addFormData.date}"
-          onchange="addFormData.date=this.value">
-      </div>
-      <div class="form-field">
-        <div class="form-lbl">Event type</div>
-        <select class="form-input" onchange="addFormData.type=this.value">
-          ${['Birthday','Graduation','New Baby','Wedding','Anniversary','Sympathy','Holiday','Other'].map(t =>
-            `<option value="${t}"${addFormData.type===t?' selected':''}>${t}</option>`
-          ).join('')}
-        </select>
-      </div>
-    </div>
-    <button class="add-btn" onclick="addManualEvent()">Add event</button>
-    <button class="cancel-add-btn" onclick="toggleAddForm()">Cancel</button>
-  </div>`;
-}
-
-function toggleEvent(id) {
-  expandedEvents[id] = !expandedEvents[id];
-  render();
-}
-
-function toggleAddForm() {
-  showAddForm = !showAddForm;
-  render();
-}
-
-function setWindow(days) {
-  upcomingDays = days;
-  render();
-}
-
-function recheckLink(evId) {
-  const ev = calendarEvents.find(e => e.id === evId);
-  if (ev) openLinkDialog(ev);
-}
-
-// ═══════════════════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════════════════
-// Safari warning
-const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && navigator.vendor?.includes('Apple');
-if (isSafari) {
-  setTimeout(() => {
-    const w = document.getElementById('safari-warn');
-    if (w) w.style.display = 'flex';
-  }, 500);
-}
-
-// Restore session if token saved
-window.addEventListener('load', () => {
-  // Give GSI script a moment to load
-  setTimeout(checkSavedToken, 400);
-});
+function calPrev(){calViewMonth--;if(calViewMonth<0){calViewMonth=11;calViewYear--;}calSelectedDay=null;render();}
+function calNext(){calViewMonth++;if(calViewMonth>11){calViewMonth=0;calViewYear++;}calSelectedDay=null;render();}
+function calSel(ds){calSelectedDay=calSelectedDay===ds?null:ds;render();}
+function togEv2(id){expandedEvents[id]=!expandedEvents[id];render();}
+function togBday(){showAddBirthdayForm=!showAddBirthdayForm;if(showAddBirthdayForm)showAddEventForm=false;render();}
+function togEv(){showAddEventForm=!showAddEventForm;if(showAddEventForm)showAddBirthdayForm=false;render();}
+function setWin(d){upcomingDays=d;render();}
+function relink(eid){const ev=calendarEvents.find(e=>e.id===eid);if(ev)openLinkDlg(ev);}
+const isSaf=/^((?!chrome|android).)*safari/i.test(navigator.userAgent)&&navigator.vendor&&navigator.vendor.includes('Apple');
+if(isSaf){setTimeout(()=>{const w=document.getElementById('safari-warn');if(w)w.style.display='flex';},500);}
+window.addEventListener('load',()=>{setTimeout(checkSaved,400);});
 </script>
 </body>
 </html>
