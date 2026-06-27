@@ -232,8 +232,8 @@ function genId(){return Math.random().toString(36).substr(2,9)+Date.now().toStri
 function fmtDate(s){if(!s)return'';const[y,m,d]=s.split('-').map(Number);const dt=new Date(y,m-1,d);return DAYS_FULL[dt.getDay()]+', '+MONTHS[m-1]+' '+d;}
 function fmtShort(s){if(!s)return'';const[y,m,d]=s.split('-').map(Number);return MONTHS_SHORT[m-1]+' '+d;}
 function fmtMD(mo,d){return MONTHS[mo-1]+' '+d;}
-function daysUntil(mo,d){const n=new Date(),ty=n.getFullYear();let nx=new Date(ty,mo-1,d);if(nx<n)nx=new Date(ty+1,mo-1,d);return Math.round((nx-n)/86400000);}
-function upcomingOcc(mo,d,from){const ty=from.getFullYear();let dt=new Date(ty,mo-1,d);if(dt<from)dt=new Date(ty+1,mo-1,d);return dt;}
+function daysUntil(mo,d){const n=localToday(),ty=n.getFullYear();let nx=new Date(ty,mo-1,d);if(nx<n)nx=new Date(ty+1,mo-1,d);return Math.round((nx-n)/86400000);}
+function upcomingOcc(mo,d,from){const f=from||localToday(),ty=f.getFullYear();let dt=new Date(ty,mo-1,d);if(dt<f)dt=new Date(ty+1,mo-1,d);return dt;}
 function upcomingYr(mo,d,from){return upcomingOcc(mo,d,from).getFullYear();}
 function getIcon(type){const t=(type||'').toLowerCase();if(t.includes('birthday'))return'🎂';if(t.includes('graduation'))return'🎓';if(t.includes('baby'))return'👶';if(t.includes('wedding')||t.includes('anniversary'))return'💍';if(t.includes('sympathy'))return'🌸';return'💌';}
 const HAS_STORE=(()=>{try{localStorage.setItem('_t','1');localStorage.removeItem('_t');return true;}catch(e){return false;}})();
