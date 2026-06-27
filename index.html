@@ -226,6 +226,7 @@ const MONTHS_SHORT=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct',
 const DAYS_FULL=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const DAYS_SHORT=['Su','Mo','Tu','We','Th','Fr','Sa'];
 function todayStr(){const d=new Date();return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate());}
+function localToday(){const d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate());}
 function p2(n){return String(n).padStart(2,'0');}
 function genId(){return Math.random().toString(36).substr(2,9)+Date.now().toString(36);}
 function fmtDate(s){if(!s)return'';const[y,m,d]=s.split('-').map(Number);const dt=new Date(y,m-1,d);return DAYS_FULL[dt.getDay()]+', '+MONTHS[m-1]+' '+d;}
@@ -334,7 +335,7 @@ function setTab(t){activeTab=t;['upcoming','calendar','month','year'].forEach(x=
 function render(){
   if(!accessToken)return;
   if(activeTab==='calendar'){renderCal();return;}
-  const ns=todayStr(),nd=new Date(ns),ty=nd.getFullYear(),tm=nd.getMonth();
+  const ns=todayStr(),nd=localToday(),ty=nd.getFullYear(),tm=nd.getMonth();
   const allEvs=getAllEvs(ty);
   let filtered=[];
   if(activeTab==='upcoming'){
@@ -376,7 +377,7 @@ function renderCal(){
   const dm={};allEvs.forEach(ev=>{if(ev.month!==mo+1)return;if(!dm[ev.day])dm[ev.day]=[];dm[ev.day].push(ev);});
   const mes=allEvs.filter(ev=>ev.month===mo+1),sc=mes.filter(ev=>ev.personId&&tracking[ev.personId]&&tracking[ev.personId][yr]&&tracking[ev.personId][yr].sent).length;
   document.getElementById('summary-bar').innerHTML='<div class="chip"><span>'+mes.length+'</span>'+MONTHS[mo]+'</div><div class="chip" style="background:rgba(232,245,233,0.95);color:#2e7d32;"><span>'+sc+'</span>Cards Sent</div><div class="chip" style="background:rgba(255,240,245,0.95);color:#c2185b;"><span>'+(mes.length-sc)+'</span>Pending</div>';
-  const ts=todayStr(),nd=new Date(ts),fd=new Date(yr,mo,1).getDay(),dim=new Date(yr,mo+1,0).getDate();
+  const ts=todayStr(),nd=localToday(),fd=new Date(yr,mo,1).getDay(),dim=new Date(yr,mo+1,0).getDate();
   let h='<div class="cal-nav"><button class="cal-nav-btn" onclick="calPrev()">&#8592;</button><span class="cal-month-lbl">'+MONTHS[mo]+' '+yr+'</span><button class="cal-nav-btn" onclick="calNext()">&#8594;</button></div>';
   h+='<div class="cal-grid"><div class="cal-dow-row">'+DAYS_SHORT.map(d=>'<div class="cal-dow">'+d+'</div>').join('')+'</div><div class="cal-days">';
   for(let i=0;i<fd;i++)h+='<div class="cal-day other-month"><span class="cal-day-num"></span></div>';
