@@ -210,6 +210,7 @@ body{background-color:#faf8ff;background-image:url("data:image/svg+xml,%3Csvg xm
     <div class="dialog-sub" id="link-dialog-sub"></div>
     <div class="dialog-person-list" id="link-person-list"></div>
     <button class="dialog-new-btn" onclick="linkAsNew()">➕ Create as new person</button>
+    <button class="dialog-new-btn" style="background:#fff8f0;border-color:#fdd;color:#c2185b;" onclick="ignoreEvent()">🚫 Not a card event — ignore forever</button>
     <button class="dialog-cancel-btn" onclick="closeLinkDialog()">Cancel</button>
   </div>
 </div>
@@ -218,7 +219,7 @@ const DRIVE_CLIENT_ID='707073899745-dq0v6glolvra3dmhti9umt25476t6kgr.apps.google
 const DRIVE_SCOPE='https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/userinfo.email';
 const DRIVE_FILE_NAME='card-tracker-data.json';
 let accessToken=null,driveFileId=null,driveSyncing=false,_driveRefreshTimer=null,userEmail='';
-let persons={},tracking={},appBirthdays=[],manualEvents=[];
+let persons={},tracking={},appBirthdays=[],manualEvents=[],ignoredEventTitles=[];
 let calendarEvents=[],calLoading=false,calLoaded=false;
 let activeTab='upcoming',upcomingDays=30,expandedEvents={};
 let showAddBirthdayForm=false,showAddEventForm=false;
@@ -264,7 +265,7 @@ function setSI(t){const el=document.getElementById('sync-indicator');if(el)el.te
 async function driveSave(){
   if(!accessToken||driveSyncing)return;driveSyncing=true;setSI('· saving...');
   try{
-    const data=JSON.stringify({persons,tracking,appBirthdays,manualEvents,savedAt:new Date().toISOString()});
+    const data=JSON.stringify({persons,tracking,appBirthdays,manualEvents,ignoredEventTitles,savedAt:new Date().toISOString()});
     if(!driveFileId)driveFileId=localStorage.getItem('ct_drive_file')||null;
     if(!driveFileId){const sr=await fetch("https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name='"+DRIVE_FILE_NAME+"'&fields=files(id)",{headers:{Authorization:'Bearer '+accessToken}});if(sr.status===401){driveSyncing=false;return;}const sd=await sr.json();if(sd.files&&sd.files.length>0)driveFileId=sd.files[0].id;}
     if(driveFileId){await fetch('https://www.googleapis.com/upload/drive/v3/files/'+driveFileId+'?uploadType=media',{method:'PATCH',headers:{Authorization:'Bearer '+accessToken,'Content-Type':'application/json'},body:data});}
@@ -279,7 +280,7 @@ async function driveLoad(){
     if(!driveFileId){const sr=await fetch("https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name='"+DRIVE_FILE_NAME+"'&fields=files(id)",{headers:{Authorization:'Bearer '+accessToken}});if(sr.status===401){setSI('');return;}const sd=await sr.json();if(!sd.files||sd.files.length===0){setSI('');await driveSave();return;}driveFileId=sd.files[0].id;if(HAS_STORE)localStorage.setItem('ct_drive_file',driveFileId);}
     const fr=await fetch('https://www.googleapis.com/drive/v3/files/'+driveFileId+'?alt=media',{headers:{Authorization:'Bearer '+accessToken}});if(fr.status===401){setSI('');return;}
     const d=await fr.json();
-    if(d.persons)persons=d.persons;if(d.tracking)tracking=d.tracking;if(d.appBirthdays)appBirthdays=d.appBirthdays;if(d.manualEvents)manualEvents=d.manualEvents;
+    if(d.persons)persons=d.persons;if(d.tracking)tracking=d.tracking;if(d.appBirthdays)appBirthdays=d.appBirthdays;if(d.manualEvents)manualEvents=d.manualEvents;if(d.ignoredEventTitles)ignoredEventTitles=d.ignoredEventTitles;
     setSI('· loaded ✓');setTimeout(()=>setSI(''),2000);render();
   }catch(e){setSI('· load error');}
 }
@@ -329,6 +330,7 @@ async function loadCal(){
     }));
     evs.sort((a,b)=>a.date.localeCompare(b.date));
     calendarEvents=evs;
+    calendarEvents=calendarEvents.filter(ev=>!ignoredEventTitles.includes(ev.title.toLowerCase()));
     calendarEvents.forEach(ev=>{const m=Object.entries(persons).find(([id,p])=>p.aliases&&p.aliases.some(a=>a.toLowerCase()===ev.title.toLowerCase()));if(m)ev.personId=m[0];});
     calLoading=false;calLoaded=true;render();setTimeout(checkNewEvs,300);
   }catch(e){console.log('loadCal err',e);calLoading=false;calLoaded=true;render();}
@@ -339,9 +341,28 @@ function setTrk(pid,yr,f,v){getTrk(pid,yr)[f]=v;if(f==='dateSent'&&v)tracking[pi
 function toggleSent(pid,yr){const t=getTrk(pid,yr);t.sent=!t.sent;if(t.sent&&!t.dateSent){const td=new Date();t.dateSent=td.getFullYear()+'-'+p2(td.getMonth()+1)+'-'+p2(td.getDate());}driveSave();render();}
 function toggleSkip(pid,yr){const t=getTrk(pid,yr);t.skip=!t.skip;if(t.skip){t.sent=false;t.dateSent='';}driveSave();render();}
 function checkNewEvs(){const u=calendarEvents.find(ev=>!ev.personId);if(!u)return;if(Object.keys(persons).length===0){calendarEvents.forEach(ev=>{if(!ev.personId){ev.personId=getOrCreate(ev.title,ev.title);}});driveSave();render();return;}openLinkDlg(u);}
-function openLinkDlg(ev){pendingLinkEvent=ev;document.getElementById('link-dialog-sub').textContent='"'+ev.title+'" is new. Link to an existing person or create a new entry.';const list=document.getElementById('link-person-list');const pl=Object.entries(persons).sort((a,b)=>a[1].name.localeCompare(b[1].name));list.style.display=pl.length===0?'none':'';list.innerHTML=pl.map(([id,p])=>'<div class="dialog-person-row" onclick="linkTo(\''+id+'\')">'+p.name+'</div>').join('');document.getElementById('link-dialog').style.display='flex';}
+function openLinkDlg(ev){pendingLinkEvent=ev;document.getElementById('link-dialog-sub').textContent='"'+ev.title+'" is new. Link to an existing person or create a new entry.';const list=document.getElementById('link-person-list');const pl=Object.entries(persons).sort((a,b)=>a[1].name.localeCompare(b[1].name));list.style.display=pl.length===0?'none':'';list.innerHTML=pl.map(([id,p])=>'<div class="dialog-person-row" style="display:flex;align-items:center;justify-content:space-between;"><span onclick="linkTo(\''+id+'\')" style="flex:1;cursor:pointer;">'+p.name+'</span><button onclick="event.stopPropagation();deletePersonFromDialog(\''+id+'\')" style="background:none;border:none;color:#ccc;cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0;" title="Delete">&#x2715;</button></div>').join('');document.getElementById('link-dialog').style.display='flex';}
 function linkTo(pid){if(!pendingLinkEvent)return;const ev=pendingLinkEvent;if(!persons[pid].aliases)persons[pid].aliases=[];if(!persons[pid].aliases.includes(ev.title))persons[pid].aliases.push(ev.title);ev.personId=pid;pendingLinkEvent=null;document.getElementById('link-dialog').style.display='none';driveSave();setTimeout(checkNewEvs,300);render();}
 function linkAsNew(){if(!pendingLinkEvent)return;const ev=pendingLinkEvent;ev.personId=getOrCreate(ev.title,ev.title);pendingLinkEvent=null;document.getElementById('link-dialog').style.display='none';driveSave();setTimeout(checkNewEvs,300);render();}
+function ignoreEvent(){
+  if(!pendingLinkEvent)return;
+  const title=pendingLinkEvent.title.toLowerCase();
+  if(!ignoredEventTitles.includes(title))ignoredEventTitles.push(title);
+  calendarEvents=calendarEvents.filter(ev=>ev.title.toLowerCase()!==title);
+  pendingLinkEvent=null;
+  document.getElementById('link-dialog').style.display='none';
+  driveSave();setTimeout(checkNewEvs,300);render();
+}
+function deletePersonFromDialog(pid){
+  if(!confirm('Delete '+persons[pid].name+' from your tracker? This will remove all their card history too.'))return;
+  delete persons[pid];delete tracking[pid];
+  // re-render person list in dialog
+  const pl=Object.entries(persons).sort((a,b)=>a[1].name.localeCompare(b[1].name));
+  const list=document.getElementById('link-person-list');
+  list.style.display=pl.length===0?'none':'';
+  list.innerHTML=pl.map(([id,p])=>'<div class="dialog-person-row" style="display:flex;align-items:center;justify-content:space-between;"><span onclick="linkTo(\''+id+'\''+')" style="flex:1;cursor:pointer;">'+p.name+'</span><button onclick="event.stopPropagation();deletePersonFromDialog(\''+id+'\''+')" style="background:none;border:none;color:#ccc;cursor:pointer;font-size:16px;padding:0 4px;flex-shrink:0;" title="Delete person">&#x2715;</button></div>').join('');
+  driveSave();
+}
 function closeLinkDialog(e){if(e&&e.target!==document.getElementById('link-dialog'))return;document.getElementById('link-dialog').style.display='none';pendingLinkEvent=null;}
 function addAppBday(){const name=addBdayData.name.trim(),mo=parseInt(addBdayData.month),d=parseInt(addBdayData.day),by=addBdayData.birthYear?parseInt(addBdayData.birthYear):null;if(!name||!mo||!d){alert('Please enter a name, month, and day.');return;}if(mo<1||mo>12){alert('Month must be 1-12.');return;}if(d<1||d>31){alert('Day must be 1-31.');return;}const pid=getOrCreate(name,null,by);if(by&&persons[pid])persons[pid].birthYear=by;appBirthdays.push({id:genId(),name,month:mo,day:d,birthYear:by,personId:pid});addBdayData={name:'',month:'',day:'',birthYear:''};showAddBirthdayForm=false;driveSave();render();}
 function delAppBday(id){if(!confirm('Remove this birthday?'))return;appBirthdays=appBirthdays.filter(b=>b.id!==id);driveSave();render();}
@@ -374,9 +395,10 @@ function render(){
   let html='';
   if(calLoading)html+='<div class="loading-state">Loading your calendar events...</div>';
   if(activeTab==='upcoming')html+='<div class="window-bar">'+[14,30,60,90].map(d=>'<button class="window-btn'+(upcomingDays===d?' active':'')+'" onclick="setWin('+d+')">Next '+d+'d</button>').join('')+'</div>';
-  html+='<div class="add-btns-row"><button class="add-toggle-btn" onclick="togBday()">🎂 Add birthday</button><button class="add-toggle-btn" onclick="togEv()">💌 Add one-time event</button></div>';
+  html+='<div class="add-btns-row"><button class="add-toggle-btn" onclick="togBday()">🎂 Add birthday</button><button class="add-toggle-btn" onclick="togEv()">💌 Add one-time event</button><button class="add-toggle-btn" onclick="togManage()">👤 Manage people</button></div>';
   if(showAddBirthdayForm)html+=buildBdayForm();
   if(showAddEventForm)html+=buildEvForm();
+  if(showManagePeople)html+=buildManagePanel();
   if(filtered.length===0&&!calLoading)html+='<div class="empty-state"><span class="empty-icon">💌</span>'+(activeTab==='upcoming'?'No events in the next '+upcomingDays+' days.':activeTab==='month'?'No events this month.':'No events this year.')+'<br><small>Add a birthday or event above.</small></div>';
   else if(activeTab==='year'){let cm=-1;filtered.forEach(ev=>{if(ev.month!==cm){cm=ev.month;html+='<div class="month-group-hdr">📅 '+MONTHS[ev.month-1]+'</div>';}html+=buildCard(ev,nd);});}
   else filtered.forEach(ev=>{html+=buildCard(ev,nd);});
@@ -396,6 +418,12 @@ function buildPanel(pid,yr,ev){
 }
 function buildBdayForm(){return '<div class="add-form"><div class="add-form-title">🎂 Add a birthday</div><div class="form-field"><div class="form-lbl">Name</div><input type="text" class="form-input" placeholder="e.g. Karen" value="'+addBdayData.name+'" oninput="addBdayData.name=this.value"></div><div class="form-row"><div class="form-field"><div class="form-lbl">Month (1-12)</div><input type="number" class="form-input" placeholder="7" min="1" max="12" value="'+addBdayData.month+'" oninput="addBdayData.month=this.value"></div><div class="form-field"><div class="form-lbl">Day</div><input type="number" class="form-input" placeholder="17" min="1" max="31" value="'+addBdayData.day+'" oninput="addBdayData.day=this.value"></div></div><div class="form-field"><div class="form-lbl">Birth year <span style="color:#bbb;font-weight:400;">(optional - shows age)</span></div><input type="number" class="form-input" placeholder="e.g. 1985" min="1900" max="2025" value="'+addBdayData.birthYear+'" oninput="addBdayData.birthYear=this.value"></div><button class="add-btn" onclick="addAppBday()">Add birthday</button><button class="cancel-add-btn" onclick="togBday()">Cancel</button></div>';}
 function buildEvForm(){return '<div class="add-form"><div class="add-form-title">💌 Add a one-time event</div><div class="form-field"><div class="form-lbl">Person\'s name</div><input type="text" class="form-input" placeholder="e.g. Sally" value="'+addEventData.name+'" oninput="addEventData.name=this.value"></div><div class="form-row"><div class="form-field"><div class="form-lbl">Date</div><input type="date" class="form-input" value="'+addEventData.date+'" onchange="addEventData.date=this.value"></div><div class="form-field"><div class="form-lbl">Event type</div><select class="form-input" onchange="addEventData.type=this.value">'+['Birthday','Graduation','New Baby','Wedding','Anniversary','Sympathy','Holiday','Other'].map(tp=>'<option value="'+tp+'"'+(addEventData.type===tp?' selected':'')+'>'+tp+'</option>').join('')+'</select></div></div><button class="add-btn" onclick="addManualEv()">Add event</button><button class="cancel-add-btn" onclick="togEv()">Cancel</button></div>';}
+function buildManagePanel(){
+  const pl=Object.entries(persons).sort((a,b)=>a[1].name.localeCompare(b[1].name));
+  if(pl.length===0)return '<div class="add-form"><div class="add-form-title">👤 Manage People</div><div style="font-size:13px;color:#888;padding:4px 0;">No people in your tracker yet.</div><button class="cancel-add-btn" onclick="togManage()">Close</button></div>';
+  return '<div class="add-form"><div class="add-form-title">👤 Manage People</div><div style="max-height:300px;overflow-y:auto;border:1.5px solid #e0d0f0;border-radius:10px;margin-bottom:12px;">'+pl.map(([id,p])=>'<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid #f5f0fa;"><input type="text" value="'+p.name+'" style="flex:1;border:none;font-size:13px;color:#2d0050;background:transparent;outline:none;" onchange="renamePerson(\''+id+'\',this.value)"><button onclick="deletePerson(\''+id+'\''+')" style="background:none;border:none;color:#ddd;cursor:pointer;font-size:16px;padding:0 2px;flex-shrink:0;" title="Delete">&#x2715;</button></div>').join('')+'</div><button class="cancel-add-btn" onclick="togManage()">Close</button></div>';}
+function renamePerson(pid,name){name=name.trim();if(!name)return;persons[pid].name=name;driveSave();}
+function deletePerson(pid){if(!confirm('Delete '+persons[pid].name+'? This removes all their card history too.'))return;delete persons[pid];delete tracking[pid];driveSave();render();}
 function renderCal(){
   const yr=calViewYear,mo=calViewMonth,allEvs=getAllEvs(yr);
   const dm={};allEvs.forEach(ev=>{if(ev.month!==mo+1)return;if(!dm[ev.day])dm[ev.day]=[];dm[ev.day].push(ev);});
@@ -410,16 +438,18 @@ function renderCal(){
   h+='</div></div>';
   h+='<div style="display:flex;gap:14px;font-size:11px;color:#9d6bbf;margin-bottom:8px;padding:0 2px;"><span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4B0082;margin-right:4px;vertical-align:middle;"></span>Birthday</span><span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#FF6B9D;margin-right:4px;vertical-align:middle;"></span>Added/One-time</span><span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4CAF50;margin-right:4px;vertical-align:middle;"></span>Card sent</span></div>';
   if(calSelectedDay){const sd=parseInt(calSelectedDay.substring(8,10)),sm=parseInt(calSelectedDay.substring(5,7));if(sm===mo+1){const se=dm[sd]||[];if(se.length>0){h+='<div class="cal-popup"><div class="cal-popup-hdr">📅 '+MONTHS[mo]+' '+sd+'</div>';se.forEach(ev=>{ev.trackingYear=yr;h+=buildCard(ev,nd);});h+='</div>';}}}
-  h+='<div class="add-btns-row"><button class="add-toggle-btn" onclick="togBday()">🎂 Add birthday</button><button class="add-toggle-btn" onclick="togEv()">💌 Add one-time event</button></div>';
-  if(showAddBirthdayForm)h+=buildBdayForm();if(showAddEventForm)h+=buildEvForm();
+  h+='<div class="add-btns-row"><button class="add-toggle-btn" onclick="togBday()">🎂 Add birthday</button><button class="add-toggle-btn" onclick="togEv()">💌 Add one-time event</button><button class="add-toggle-btn" onclick="togManage()">👤 Manage people</button></div>';
+  if(showAddBirthdayForm)h+=buildBdayForm();if(showAddEventForm)h+=buildEvForm();if(showManagePeople)h+=buildManagePanel();
   document.getElementById('view').innerHTML=h;
 }
 function calPrev(){calViewMonth--;if(calViewMonth<0){calViewMonth=11;calViewYear--;}calSelectedDay=null;render();}
 function calNext(){calViewMonth++;if(calViewMonth>11){calViewMonth=0;calViewYear++;}calSelectedDay=null;render();}
 function calSel(ds){calSelectedDay=calSelectedDay===ds?null:ds;render();}
 function togEv2(id){expandedEvents[id]=!expandedEvents[id];render();}
-function togBday(){showAddBirthdayForm=!showAddBirthdayForm;if(showAddBirthdayForm)showAddEventForm=false;render();}
-function togEv(){showAddEventForm=!showAddEventForm;if(showAddEventForm)showAddBirthdayForm=false;render();}
+let showManagePeople=false;
+function togBday(){showAddBirthdayForm=!showAddBirthdayForm;if(showAddBirthdayForm){showAddEventForm=false;showManagePeople=false;}render();}
+function togEv(){showAddEventForm=!showAddEventForm;if(showAddEventForm){showAddBirthdayForm=false;showManagePeople=false;}render();}
+function togManage(){showManagePeople=!showManagePeople;if(showManagePeople){showAddBirthdayForm=false;showAddEventForm=false;}render();}
 function setWin(d){upcomingDays=d;render();}
 function relink(eid){const ev=calendarEvents.find(e=>e.id===eid);if(ev)openLinkDlg(ev);}
 const isSaf=/^((?!chrome|android).)*safari/i.test(navigator.userAgent)&&navigator.vendor&&navigator.vendor.includes('Apple');
