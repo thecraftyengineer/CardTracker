@@ -379,7 +379,16 @@ function getAllEvs(year){
   calendarEvents.forEach(ev=>{const mo=parseInt(ev.date.substring(5,7)),d=parseInt(ev.date.substring(8,10)),pid=ev.personId,by=pid&&persons[pid]?persons[pid].birthYear:null;evs.push({id:'cal_'+ev.id,displayName:pid&&persons[pid]?persons[pid].name:ev.title,month:mo,day:d,trackingYear:year,personId:pid,birthYear:by,type:'birthday',isCal:true,sourceId:ev.id,needsLink:!pid});});
   appBirthdays.forEach(b=>{const by=b.birthYear||(persons[b.personId]?persons[b.personId].birthYear:null);evs.push({id:'bday_'+b.id,displayName:b.name,month:b.month,day:b.day,trackingYear:year,personId:b.personId,birthYear:by,type:'birthday',isAppBday:true,sourceId:b.id});});
   manualEvents.forEach(ev=>{const ey=parseInt(ev.date.substring(0,4));if(ey!==year)return;const mo=parseInt(ev.date.substring(5,7)),d=parseInt(ev.date.substring(8,10));evs.push({id:'manual_'+ev.id,displayName:ev.title,month:mo,day:d,trackingYear:year,personId:ev.personId,birthYear:null,type:ev.type,isManual:true,sourceId:ev.id});});
-  return evs;
+  // Deduplicate: if same personId and same month+day, keep only the first
+  const seen=new Set();
+  const deduped=evs.filter(ev=>{
+    if(!ev.personId) return true; // always show unlinked events
+    const key=ev.personId+'_'+ev.month+'_'+ev.day;
+    if(seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  return deduped;
 }
 function ageLabel(by,yr){if(!by)return'';return'Turning '+(yr-by)+' in '+yr;}
 function setTab(t){activeTab=t;['upcoming','calendar','month','year'].forEach(x=>document.getElementById('tab-'+x).classList.toggle('active',x===t));render();}
