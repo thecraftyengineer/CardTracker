@@ -186,6 +186,7 @@ body{background-color:#faf8ff;background-image:url("data:image/svg+xml,%3Csvg xm
   <div id="drive-bar" class="drive-bar disconnected">
     <span style="font-size:16px;">☁️</span>
     <span id="drive-status" style="flex:1;">Connect Google Drive to save your tracking data</span>
+    <button id="refresh-btn" style="display:none;padding:4px 10px;border-radius:20px;border:none;cursor:pointer;font-size:11px;font-weight:500;background:#f3e8ff;color:#4B0082;border:1px solid #e0d0f0;margin-right:4px;" onclick="refreshCal()">🔄 Refresh</button>
     <button class="drive-btn connect" id="drive-btn" onclick="driveConnect()">Connect</button>
   </div>
   <div class="tabs">
@@ -256,7 +257,8 @@ function signIn(){
 function signOut(){accessToken=null;driveFileId=null;userEmail='';if(_driveRefreshTimer){clearTimeout(_driveRefreshTimer);_driveRefreshTimer=null;}if(HAS_STORE){['ct_token','ct_token_expiry','ct_drive_file','ct_email'].forEach(k=>localStorage.removeItem(k));}document.getElementById('login-screen').style.display='flex';document.getElementById('app').style.display='none';calendarEvents=[];calLoaded=false;calLoading=false;}
 function showApp(){document.getElementById('login-screen').style.display='none';document.getElementById('app').style.display='block';document.getElementById('user-email').textContent=userEmail;updDriveBar();render();}
 function checkSaved(){if(!HAS_STORE)return;const t=localStorage.getItem('ct_token');if(!t)return;const exp=parseInt(localStorage.getItem('ct_token_expiry')||'0');if(Date.now()<exp){accessToken=t;userEmail=localStorage.getItem('ct_email')||'';driveFileId=localStorage.getItem('ct_drive_file')||null;schedRefresh(exp);showApp();driveLoad().then(()=>loadCal());}}
-function updDriveBar(){const bar=document.getElementById('drive-bar'),st=document.getElementById('drive-status'),btn=document.getElementById('drive-btn');if(!bar)return;if(accessToken){bar.className='drive-bar connected';st.innerHTML='&#x2713; Google Drive connected <span class="drive-sync-indicator" id="sync-indicator"></span>';btn.textContent='Disconnect';btn.className='drive-btn disconnect';btn.onclick=signOut;}else{bar.className='drive-bar disconnected';st.textContent='Connect Google Drive to save your tracking data';btn.textContent='Connect';btn.className='drive-btn connect';btn.onclick=driveConnect;}}
+function updDriveBar(){const bar=document.getElementById('drive-bar'),st=document.getElementById('drive-status'),btn=document.getElementById('drive-btn'),rbtn=document.getElementById('refresh-btn');if(!bar)return;if(accessToken){bar.className='drive-bar connected';st.innerHTML='&#x2713; Google Drive connected <span class="drive-sync-indicator" id="sync-indicator"></span>';btn.textContent='Disconnect';btn.className='drive-btn disconnect';btn.onclick=signOut;if(rbtn)rbtn.style.display='inline-block';}else{bar.className='drive-bar disconnected';st.textContent='Connect Google Drive to save your tracking data';btn.textContent='Connect';btn.className='drive-btn connect';btn.onclick=driveConnect;if(rbtn)rbtn.style.display='none';}}
+function refreshCal(){calendarEvents=[];calLoaded=false;loadCal();}
 function driveConnect(){signIn();}
 function setSI(t){const el=document.getElementById('sync-indicator');if(el)el.textContent=t;}
 async function driveSave(){
@@ -286,27 +288,44 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState!==
 async function loadCal(){
   if(!accessToken||calLoading)return;calLoading=true;calLoaded=false;render();
   try{
-    const cr=await fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList',{headers:{Authorization:'Bearer '+accessToken}});
-    if(cr.status===401){calLoading=false;return;}
-    const cals=(await cr.json()).items||[];
     const now=new Date(),ys=new Date(now.getFullYear(),0,1).toISOString(),ye=new Date(now.getFullYear(),11,31,23,59,59).toISOString();
     const evs=[];
-    await Promise.all(cals.map(async cal=>{
-      try{
-        const url=new URL('https://www.googleapis.com/calendar/v3/calendars/'+encodeURIComponent(cal.id)+'/events');
-        url.searchParams.set('timeMin',ys);url.searchParams.set('timeMax',ye);url.searchParams.set('singleEvents','true');url.searchParams.set('maxResults','500');url.searchParams.set('fields','items(id,summary,start)');
-        const er=await fetch(url.toString(),{headers:{Authorization:'Bearer '+accessToken}});
-        if(!er.ok)return;
-        const items=(await er.json()).items||[];
-        const isBdayCal=cal.id.includes('addressbook')||cal.id.includes('#contacts@group')||cal.id.includes('birthday')||(cal.summary||'').toLowerCase()==='birthdays'||(cal.summary||'').toLowerCase()==='birthday';
-        items.forEach(ev=>{
-          const title=(ev.summary||'').trim();if(!title)return;
-          const looksLike=title.toLowerCase().includes('birthday');
-          if(!isBdayCal&&!looksLike)return;
-          const dr=ev.start&&(ev.start.date||ev.start.dateTime);if(!dr)return;
-          evs.push({id:ev.id,title,date:dr.substring(0,10),calendarId:cal.id,calendarName:cal.summary,type:'birthday'});
-        });
-      }catch(e){console.log('cal err',cal.id,e);}
+    // Always fetch from these two calendars specifically, plus any birthday-type calendars
+    const cr=await fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList',{headers:{Authorization:'Bearer '+accessToken}});
+    if(cr.status===401){calLoading=false;return;}
+    const allCals=(await cr.json()).items||[];
+    // Priority calendars always included
+    const priorityIds=['geetansuggs@gmail.com','a@craftyengineer.com'];
+    // Also include birthday-type calendars
+    const calIds=new Set(priorityIds);
+    allCals.forEach(cal=>{
+      const isBdayCal=cal.id.includes('addressbook')||cal.id.includes('#contacts@group')||cal.id.includes('birthday')||(cal.summary||'').toLowerCase()==='birthdays'||(cal.summary||'').toLowerCase()==='birthday';
+      if(isBdayCal)calIds.add(cal.id);
+    });
+    // For each calendar, search by keyword with high maxResults
+    await Promise.all([...calIds].map(async calId=>{
+      const cal=allCals.find(c=>c.id===calId)||{id:calId,summary:calId};
+      // Fetch birthday and bday keyword events separately and combine
+      for(const q of ['birthday','bday']){
+        try{
+          const url=new URL('https://www.googleapis.com/calendar/v3/calendars/'+encodeURIComponent(calId)+'/events');
+          url.searchParams.set('timeMin',ys);url.searchParams.set('timeMax',ye);
+          url.searchParams.set('singleEvents','true');url.searchParams.set('maxResults','2500');
+          url.searchParams.set('q',q);url.searchParams.set('fields','items(id,summary,start)');
+          const er=await fetch(url.toString(),{headers:{Authorization:'Bearer '+accessToken}});
+          if(!er.ok)continue;
+          const items=(await er.json()).items||[];
+          items.forEach(ev=>{
+            const title=(ev.summary||'').trim();if(!title)return;
+            const tl=title.toLowerCase();
+            if(!tl.includes('birthday')&&!tl.includes('bday'))return;
+            const dr=ev.start&&(ev.start.date||ev.start.dateTime);if(!dr)return;
+            // Deduplicate by event id
+            if(!evs.find(e=>e.id===ev.id))
+              evs.push({id:ev.id,title,date:dr.substring(0,10),calendarId:calId,calendarName:cal.summary,type:'birthday'});
+          });
+        }catch(e){console.log('cal err',calId,q,e);}
+      }
     }));
     evs.sort((a,b)=>a.date.localeCompare(b.date));
     calendarEvents=evs;
